@@ -1,0 +1,31 @@
+Snakes:
+		https://assetstore.unity.com/packages/3d/characters/creatures/fantasy-snake-4575
+		https://assetstore.unity.com/packages/3d/characters/animals/giant-viper-3671
+
+
+
+Big, slow moving guy:
+	oak-tree enemy:
+		https://assetstore.unity.com/packages/3d/characters/creatures/oak-tree-ent-3751
+	magma epic creature:
+		https://assetstore.unity.com/packages/3d/characters/creatures/magma-elemental-epic-creature-65570
+	earth-titan:
+		https://assetstore.unity.com/packages/3d/characters/creatures/earth-titan-46640
+
+Deadly Humanoid-type:
+	ghost/ghoul:
+		https://assetstore.unity.com/packages/3d/characters/creatures/nightmare-creature-3-90506
+	dark skeleton wizard:
+		https://assetstore.unity.com/packages/3d/characters/creatures/fantasy-monster-wizard-demo-103037
+	faceless zombie stalker:
+		https://assetstore.unity.com/packages/3d/characters/creatures/total-horror-2-the-stalker-49353
+
+
+
+
+
+Main-character (if needed?):
+
+Environment:
+
+
