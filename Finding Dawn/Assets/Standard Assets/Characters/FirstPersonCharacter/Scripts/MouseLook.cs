@@ -7,10 +7,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class MouseLook
     {
-        public float XSensitivity = 2f;
+        public float XSensitivity = 2f;//2
         public float YSensitivity = 2f;
+		public float PS4XSensitivity = 6f;
+		public float PS4YSensitivity = 6f;
         public bool clampVerticalRotation = true;
-        public float MinimumX = -90F;
+        public float MinimumX = -90F;//-90
         public float MaximumX = 90F;
         public bool smooth;
         public float smoothTime = 5f;
@@ -32,6 +34,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+
+			if (xRot == 0.0f && yRot == 0.0f) {
+				yRot = CrossPlatformInputManager.GetAxis("PS4_Mouse X") * PS4XSensitivity;
+				xRot = CrossPlatformInputManager.GetAxis("PS4_Mouse Y") * PS4YSensitivity;
+			}
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
