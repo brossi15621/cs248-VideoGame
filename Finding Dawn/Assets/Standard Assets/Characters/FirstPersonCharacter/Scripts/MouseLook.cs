@@ -9,8 +9,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         public float XSensitivity = 2f;//2
         public float YSensitivity = 2f;
-		public float PS4XSensitivity = 4f;
-		public float PS4YSensitivity = 4f;
+		public float PS4XSensitivity = 6f;
+		public float PS4YSensitivity = 6f;
         public bool clampVerticalRotation = true;
         public float MinimumX = -90F;//-90
         public float MaximumX = 90F;
