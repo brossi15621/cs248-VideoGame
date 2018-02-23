@@ -28,6 +28,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+		private bool isGrounded; // is on a slope or not
+		public float slideFriction = 0.3f; // ajusting the friction of the slope
+		private Vector3 hitNormal; //orientation of the slope.
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -63,24 +67,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+			if (!m_Jump && isGrounded)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+			if (!m_PreviouslyGrounded && isGrounded)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
+			if (!isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
             }
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			m_PreviouslyGrounded = isGrounded;
         }
 
 
@@ -109,7 +113,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
 
 
-            if (m_CharacterController.isGrounded)
+            if (isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
@@ -125,7 +129,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
             }
+			if (!isGrounded) {
+				m_MoveDir.x += (1f - hitNormal.y) * hitNormal.x * (speed - slideFriction);
+				m_MoveDir.z += (1f - hitNormal.y) * hitNormal.z * (speed - slideFriction);
+			}
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+			isGrounded = Vector3.Angle (Vector3.up, hitNormal) <=  m_CharacterController.slopeLimit;
+			if (!m_CharacterController.isGrounded)
+				isGrounded = false;
+			print (isGrounded);
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
@@ -162,7 +174,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
-            if (!m_CharacterController.isGrounded)
+			if (!isGrounded)
             {
                 return;
             }
@@ -184,7 +196,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+			if (m_CharacterController.velocity.magnitude > 0 && isGrounded)
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -243,6 +255,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+			hitNormal = hit.normal;
             Rigidbody body = hit.collider.attachedRigidbody;
             //dont move the rigidbody if the character is on top of it
             if (m_CollisionFlags == CollisionFlags.Below)
