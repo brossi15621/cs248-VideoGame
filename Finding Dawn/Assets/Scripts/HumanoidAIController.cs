@@ -90,7 +90,7 @@ public class HumanoidAIController : MonoBehaviour {
 		//Check angle
 			&& (!patrol || angle < findAngle)
 		//Check for barriers
-			&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.collider.transform == mainCharacter.parent))) {
+			&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && (hit.transform.tag == "Player" || hit.transform.tag == "MainCamera")))) {
 			return true;
 		}
 		return false;
