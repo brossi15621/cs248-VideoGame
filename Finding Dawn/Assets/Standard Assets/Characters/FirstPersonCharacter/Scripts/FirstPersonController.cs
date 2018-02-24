@@ -137,7 +137,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			isGrounded = Vector3.Angle (Vector3.up, hitNormal) <=  m_CharacterController.slopeLimit;
 			if (!m_CharacterController.isGrounded)
 				isGrounded = false;
-			print (isGrounded);
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
