@@ -61,10 +61,13 @@ public class SnakeAIController : MonoBehaviour {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
-
-		if ( !patrol && Vector3.Distance (mainCharacter.position, this.transform.position) < chaseDistance) {
+		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+		if ( !patrol && distance < chaseDistance) {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * alertSpeed);
+		} else if(distance < 4.0f){
+			patrol = false;
+			myRenderer.material.color = Color.red;
 		} else {
 			//not alert
 			myRenderer.material.color = Color.blue;
