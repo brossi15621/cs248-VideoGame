@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1941116033174274}
+  m_RootGameObject: {fileID: 1037839875202454}
   m_IsPrefabParent: 1
---- !u!1 &1941116033174274
+--- !u!1 &1037839875202454
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4111034890346022}
-  - component: {fileID: 33125642274400350}
-  - component: {fileID: 23233240273411514}
-  - component: {fileID: 114927670266820622}
-  - component: {fileID: 143065595619319022}
+  - component: {fileID: 4638537294212490}
+  - component: {fileID: 33891332162152606}
+  - component: {fileID: 23864807159252532}
+  - component: {fileID: 143562181968828412}
+  - component: {fileID: 114366154193830740}
   m_Layer: 0
-  m_Name: HumanoidAI
+  m_Name: Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4111034890346022
+--- !u!4 &4638537294212490
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941116033174274}
-  m_LocalRotation: {x: -0, y: 0.99999934, z: -0, w: -0.0011384487}
-  m_LocalPosition: {x: 134.77, y: 1.95, z: 78.62}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_GameObject: {fileID: 1037839875202454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 175.48488, y: 10, z: 250.83261}
+  m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.12999, z: 0}
---- !u!23 &23233240273411514
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23864807159252532
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941116033174274}
+  m_GameObject: {fileID: 1037839875202454}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -77,45 +77,49 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33125642274400350
+--- !u!33 &33891332162152606
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941116033174274}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114927670266820622
+  m_GameObject: {fileID: 1037839875202454}
+  m_Mesh: {fileID: 4300000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
+--- !u!114 &114366154193830740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941116033174274}
+  m_GameObject: {fileID: 1037839875202454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40044fae5809646f1a0d79cc9d2457ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 5306c1eb1c15a4b3a8c9ece306bd7baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCharacter: {fileID: 0}
-  waypoints: []
-  accuracyWaypoint: 5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  accuracyWaypoint: 20
   patrolSpeed: 3
-  alertSpeed: 6
+  alertSpeed: 7
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
---- !u!143 &143065595619319022
+  findAngle: 50
+  findDistance: 50
+--- !u!143 &143562181968828412
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1941116033174274}
+  m_GameObject: {fileID: 1037839875202454}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.6
+  m_Height: 0.02
+  m_Radius: 0.01
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.003}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanoidAIController : MonoBehaviour {
+public class GiantAIController : MonoBehaviour {
 
 	private Transform mainCharacter;
 	private Renderer myRenderer;
@@ -11,13 +11,13 @@ public class HumanoidAIController : MonoBehaviour {
 	public GameObject[] waypoints;
 	int currentWaypoint;
 	float gravity = -10f;
-	public float accuracyWaypoint = 5.0f;
+	public float accuracyWaypoint = 20.0f;
 	public float patrolSpeed = 3.0f;
-	public float alertSpeed = 10.0f;
+	public float alertSpeed = 7.0f;
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
-	public float findAngle = 60f;
-	public float findDistance = 40f;
+	public float findAngle = 50f;
+	public float findDistance = 50f;
 
 
 	// Use this for initialization
@@ -34,20 +34,20 @@ public class HumanoidAIController : MonoBehaviour {
 	}
 
 	void update() {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 direction = mainCharacter.position - this.transform.position;
 		float angle = Vector3.Angle (direction, this.transform.forward);
 		direction.y = 0f;
 		//Maybe adding some gravity things
-//		if (myCharacterController.isGrounded) {
-//			direction.y = 0;
-//		} else {
-//			direction.y += gravity * Time.deltaTime;
-//		}
+		//		if (myCharacterController.isGrounded) {
+		//			direction.y = 0;
+		//		} else {
+		//			direction.y += gravity * Time.deltaTime;
+		//		}
 
 
 		if (patrol && waypoints.Length > 0) {
@@ -61,11 +61,11 @@ public class HumanoidAIController : MonoBehaviour {
 			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
 			direction.y = 0f;
 
-//			if (myCharacterController.isGrounded) {
-//				direction.y = 0;
-//			} else {
-//				direction.y += gravity * Time.deltaTime;
-//			}
+			//			if (myCharacterController.isGrounded) {
+			//				direction.y = 0;
+			//			} else {
+			//				direction.y += gravity * Time.deltaTime;
+			//			}
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
@@ -87,9 +87,9 @@ public class HumanoidAIController : MonoBehaviour {
 		RaycastHit hit;
 		//Check Distance
 		if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
-		//Check angle
+			//Check angle
 			&& (!patrol || angle < findAngle)
-		//Check for barriers
+			//Check for barriers
 			&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && (hit.transform.tag == "Player" || hit.transform.tag == "MainCamera")))) {
 			return true;
 		}
