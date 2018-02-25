@@ -482,11 +482,11 @@ MonoBehaviour:
   - {fileID: 2128105276}
   accuracyWaypoint: 20
   patrolSpeed: 3
-  alertSpeed: 5
+  alertSpeed: 7
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   findAngle: 50
-  findDistance: 90
+  findDistance: 50
 --- !u!4 &1020035628 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -624,7 +624,7 @@ MonoBehaviour:
   - {fileID: 1971123561}
   accuracyWaypoint: 5
   patrolSpeed: 5
-  alertSpeed: 7
+  alertSpeed: 8
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   findAngle: 60
@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 1429154937}
   - component: {fileID: 1429154936}
   - component: {fileID: 1429154935}
+  - component: {fileID: 1429154939}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Player
@@ -754,7 +755,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1429154934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -810,12 +811,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1429154934}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 1.5343094, y: -0.45999986, z: 1.6795158}
+  m_LocalPosition: {x: 1.534, y: -0.469, z: 1.6795158}
   m_LocalScale: {x: 0.09999998, y: 0.099999994, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 1020035628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -270, y: -90, z: 90}
+--- !u!114 &1429154939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429154934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192081b9b1104351a780511651615bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1453179677
 GameObject:
   m_ObjectHideFlags: 0
