@@ -16,8 +16,8 @@ public class HumanoidAIController : MonoBehaviour {
 	public float alertSpeed = 10.0f;
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
-	public float findAngle = 30f;
-	public float findDistance = 15f;
+	public float findAngle = 60f;
+	public float findDistance = 40f;
 
 
 	// Use this for initialization

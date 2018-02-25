@@ -316,7 +316,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
       propertyPath: m_Name
-      value: HumanoidAI
+      value: SnakeAI
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -338,6 +338,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2a6eea210bcf4fe69a4a2902e991b3c, type: 2}
+    - target: {fileID: 100000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
   m_IsPrefabParent: 0
@@ -448,6 +452,28 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: d6b34493f8c314f059eea5f432c0748f, type: 3}
   m_PrefabInternal: {fileID: 71976089}
+--- !u!114 &819712840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819712839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5306c1eb1c15a4b3a8c9ece306bd7baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 527399697}
+  - {fileID: 1023398288}
+  - {fileID: 2128105276}
+  accuracyWaypoint: 20
+  patrolSpeed: 3
+  alertSpeed: 7
+  patrolRotationSpeed: 0.01
+  alertRotationSpeed: 0.1
+  findAngle: 50
+  findDistance: 50
 --- !u!143 &819712843
 CharacterController:
   m_ObjectHideFlags: 0
@@ -465,28 +491,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: -0.003}
---- !u!114 &819712844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 819712839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40044fae5809646f1a0d79cc9d2457ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 527399697}
-  - {fileID: 1023398288}
-  - {fileID: 2128105276}
-  accuracyWaypoint: 20
-  patrolSpeed: 3
-  alertSpeed: 7
-  patrolRotationSpeed: 0.01
-  alertRotationSpeed: 0.1
-  findAngle: 50
-  findDistance: 50
 --- !u!4 &1020035628 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -605,7 +609,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1177053354
+--- !u!135 &1177053354
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177053352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1177053358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -613,7 +629,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177053352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40044fae5809646f1a0d79cc9d2457ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 1beec426e8ad641ad86a6ea8a2021645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
@@ -623,12 +639,11 @@ MonoBehaviour:
   - {fileID: 410532947}
   - {fileID: 1971123561}
   accuracyWaypoint: 5
-  patrolSpeed: 5
-  alertSpeed: 8
+  patrolSpeed: 3
+  alertSpeed: 9
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
-  findAngle: 60
-  findDistance: 40
+  chaseDistance: 50
 --- !u!1001 &1277965410
 Prefab:
   m_ObjectHideFlags: 0
@@ -838,7 +853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1453179678}
   m_Layer: 0
-  m_Name: WaypointsHumanoidAI
+  m_Name: WaypointsSnakeAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
