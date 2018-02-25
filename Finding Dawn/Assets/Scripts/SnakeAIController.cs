@@ -33,6 +33,11 @@ public class SnakeAIController : MonoBehaviour {
 		mainCharacter = mainCamera.transform;
 	}
 
+	// Public getter for other snakes to communicate
+	public bool isPatrolling() {
+		return patrol;
+	}
+
 	void Update() {
 		if (Input.GetButton ("Run")) {
 			myCollider.radius = .2f;
@@ -86,6 +91,24 @@ public class SnakeAIController : MonoBehaviour {
 					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 				}
 			}
+			// Now check to see if colliding with other snake
+			// **** NOTE: I DON'T THINK THIS WORKS UNLESS SNAKES HAVE A RIGID BODY ****
+			GameObject collidingObject = other.gameObject;
+			SnakeAIController collidingSnake = collidingObject.GetComponent (typeof(SnakeAIController)) as SnakeAIController;
+			if (collidingSnake != null) {
+				//colliding with another Snake AI. Check if that snake is alert
+				if (collidingSnake.isPatrolling ()) {
+					// do nothing
+				} else {
+					// colliding with chasing snake, set this snake to chase
+					patrol = false;
+					Vector3 direction = mainCharacter.position - this.transform.position;
+					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+					myRenderer.material.color = Color.red;
+					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+				}
+			}
 		}
 	}
+
 }
