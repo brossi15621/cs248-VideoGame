@@ -9,6 +9,7 @@ public class SnakeAIController : MonoBehaviour {
 	private SphereCollider myCollider;
 	private CharacterController myCharacterController;
 	private bool patrol = true;
+	private float deadSensitivity = .19f; //The sensitity where below this number the controller doesn't recognize it as moving left stick
 	public GameObject[] waypoints;
 	int currentWaypoint;
 	public float accuracyWaypoint = 5.0f;
@@ -82,8 +83,11 @@ public class SnakeAIController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (patrol) {
-			if (other.tag == "Player" || other.tag == "MainCamera") {
-				if (Input.GetButton ("Horizontal") || Input.GetButton ("Vertical") || Input.GetButton ("Jump")) {
+			//Checks if colliding with player/camera
+			if (other.tag == "Player" || other.tag == "MainCamera") { 
+				//Checks if player is moving or jumping
+				if (Input.GetAxis ("Horizontal") < deadSensitivity || Input.GetAxis ("Vertical") < deadSensitivity || Input.GetButton ("Jump")) {
+					//If so, alerts the snake.
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
