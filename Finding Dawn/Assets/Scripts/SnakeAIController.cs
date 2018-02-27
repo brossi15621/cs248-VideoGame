@@ -86,7 +86,7 @@ public class SnakeAIController : MonoBehaviour {
 			//Checks if colliding with player/camera
 			if (other.tag == "Player" || other.tag == "MainCamera") { 
 				//Checks if player is moving or jumping
-				if (Input.GetAxis ("Horizontal") < deadSensitivity || Input.GetAxis ("Vertical") < deadSensitivity || Input.GetButton ("Jump")) {
+				if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
 					//If so, alerts the snake.
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;

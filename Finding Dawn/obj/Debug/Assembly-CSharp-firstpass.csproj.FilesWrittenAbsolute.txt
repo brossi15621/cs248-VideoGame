@@ -94,3 +94,4 @@
 /Users/brossi/Documents/Development/cs248/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/Unity.Cecil.Mdb.dll
 /Users/brossi/Documents/Development/cs248/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
 /Users/brossi/Documents/Development/cs248/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+/Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.WindowsStandalone.Extensions.dll

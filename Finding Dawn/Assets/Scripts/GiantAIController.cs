@@ -24,10 +24,6 @@ public class GiantAIController : MonoBehaviour {
 	void Start () {
 		myRenderer = GetComponent<Renderer> ();
 		myCharacterController = GetComponent<CharacterController> ();
-
-		//This is buggy because it is just getting the parent object and not making
-		//an array of its children. personally I think it might be better to just publically enter these.
-		//waypoints = GameObject.FindGameObjectsWithTag ("WaypointsHumanoidAI"); 
 		currentWaypoint = Random.Range (0, waypoints.Length);
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera")[0];
 		mainCharacter = mainCamera.transform;
@@ -90,7 +86,7 @@ public class GiantAIController : MonoBehaviour {
 			//Check angle
 			&& (!patrol || angle < findAngle)
 			//Check for barriers
-			&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && (hit.transform.tag == "Player" || hit.transform.tag == "MainCamera")))) {
+			&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) {
 			return true;
 		}
 		return false;

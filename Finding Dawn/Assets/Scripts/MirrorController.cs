@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MirrorController : MonoBehaviour {
-	private MeshRenderer myRenderer;
+	private RawImage myMirror;
 
 	// Use this for initialization
 	void Start () {
-		myRenderer = gameObject.GetComponent<MeshRenderer> ();
+		myMirror = gameObject.GetComponent<RawImage> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Mirror")) {
-			if (myRenderer.enabled) {
-				myRenderer.enabled = false;
+			if (myMirror.enabled) {
+				
+				myMirror.enabled = false;
 			} else {
-				myRenderer.enabled = true;
+				myMirror.enabled = true;
 			}
 		}
 	}
