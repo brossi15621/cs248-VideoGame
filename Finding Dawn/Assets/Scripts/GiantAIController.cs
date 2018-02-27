@@ -29,10 +29,6 @@ public class GiantAIController : MonoBehaviour {
 		mainCharacter = mainCamera.transform;
 	}
 
-	void update() {
-
-	}
-
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 direction = mainCharacter.position - this.transform.position;
