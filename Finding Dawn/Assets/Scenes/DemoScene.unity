@@ -539,6 +539,19 @@ Prefab:
       propertyPath: waypoints.Array.data[2]
       value: 
       objectReference: {fileID: 2128105276}
+    - target: {fileID: 4638537294212490, guid: aa72014d333b3433793d77203edb6801, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638537294212490, guid: aa72014d333b3433793d77203edb6801, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114366154193830740, guid: aa72014d333b3433793d77203edb6801,
+        type: 2}
+      propertyPath: findAngle
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa72014d333b3433793d77203edb6801, type: 2}
   m_IsPrefabParent: 0
@@ -3159,7 +3172,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 911673660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -4569,7 +4582,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613368132767682, guid: 7b9c64a4834064b9ea931f8fda445c8d, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1268299891903444, guid: 7b9c64a4834064b9ea931f8fda445c8d, type: 2}
       propertyPath: m_Name
@@ -6425,7 +6438,7 @@ GameObject:
   - component: {fileID: 1851010994}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

@@ -50,3 +50,4 @@
 /Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+/Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn/Temp/bin/Debug/UnityEditor.WindowsStandalone.Extensions.dll
