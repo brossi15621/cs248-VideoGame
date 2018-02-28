@@ -18,6 +18,7 @@ public class SnakeAIController : MonoBehaviour {
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
+	public Animation anim;
 
 
 	// Use this for initialization
@@ -25,6 +26,7 @@ public class SnakeAIController : MonoBehaviour {
 		myRenderer = GetComponent<Renderer> ();
 		myCharacterController = GetComponent<CharacterController> ();
 		myCollider = GetComponent<SphereCollider> ();
+		anim = GetComponent<Animation> ();
 
 		//This is buggy because it is just getting the parent object and not making
 		//an array of its children. personally I think it might be better to just publically enter these.
@@ -41,8 +43,10 @@ public class SnakeAIController : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetButton ("Run")) {
+			// For new snake prefab with snake model, this should be ~4.0f
 			myCollider.radius = .2f;
 		} else {
+			// For new snake prefab with snake model, this should be ~2.0f
 			myCollider.radius = .1f;
 		}
 	}
@@ -68,10 +72,10 @@ public class SnakeAIController : MonoBehaviour {
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
-		if ( !patrol && distance < chaseDistance) {
+		if (!patrol && distance < chaseDistance) {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			myCharacterController.Move(this.transform.forward * Time.deltaTime * alertSpeed);
-		} else if(distance < 4.0f){
+			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+		} else if (distance < 4.0f) {
 			patrol = false;
 			myRenderer.material.color = Color.red;
 		} else {
