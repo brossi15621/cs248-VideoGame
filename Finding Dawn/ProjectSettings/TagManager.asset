@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WaypointHumanoid
   - Terrain
+  - Safezone
   layers:
   - Default
   - TransparentFX
