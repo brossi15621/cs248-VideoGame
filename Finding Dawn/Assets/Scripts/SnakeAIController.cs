@@ -22,6 +22,7 @@ public class SnakeAIController : MonoBehaviour {
 	public float chaseDistance = 50f;
 	public Animation anim;
 
+    private float gravity = 0f;
 
 
 	// Use this for initialization
@@ -58,7 +59,8 @@ public class SnakeAIController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 direction = mainCharacter.position - this.transform.position;
-		direction.y = 0f;
+        gravity -= 9.81f * Time.deltaTime;
+        direction.y = gravity;
 
 
 		if (patrol && waypoints.Length > 0) {
@@ -70,7 +72,7 @@ public class SnakeAIController : MonoBehaviour {
 
 			//rotate towards current waypoint
 			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
-			direction.y = 0f;
+			direction.y = gravity;
 
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
@@ -91,6 +93,8 @@ public class SnakeAIController : MonoBehaviour {
 		if (distance <= killDistance) {
 			manager.dead = true;
 		}
+        if (myCharacterController.isGrounded)
+            gravity = 0f;
 	}
 
 	void OnTriggerStay(Collider other) {
