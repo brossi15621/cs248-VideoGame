@@ -73,6 +73,12 @@ public class GiantAIController : MonoBehaviour {
 			myRenderer.material.color = Color.blue;
 			patrol = true;
 		}
+
+		// Setting character death bool to true
+//		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+//		if (distance <= killDistance) {
+//			manager.dead = true;
+//		}
 	}
 
 	private bool lineOfSight(float angle){

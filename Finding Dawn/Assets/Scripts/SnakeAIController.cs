@@ -9,7 +9,9 @@ public class SnakeAIController : MonoBehaviour {
 	private SphereCollider myCollider;
 	private CharacterController myCharacterController;
 	private bool patrol = true;
+	private GameManagerScript manager;
 	private float deadSensitivity = .19f; //The sensitity where below this number the controller doesn't recognize it as moving left stick
+	private float killDistance = 3f; 
 	public GameObject[] waypoints;
 	int currentWaypoint;
 	public float accuracyWaypoint = 5.0f;
@@ -21,12 +23,14 @@ public class SnakeAIController : MonoBehaviour {
 	public Animation anim;
 
 
+
 	// Use this for initialization
 	void Start () {
 		//myRenderer = GetComponent<Renderer> ();
 		myCharacterController = GetComponent<CharacterController> ();
 		myCollider = GetComponent<SphereCollider> ();
 		anim = GetComponent<Animation> ();
+		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
 
 		//This is buggy because it is just getting the parent object and not making
 		//an array of its children. personally I think it might be better to just publically enter these.
@@ -44,10 +48,10 @@ public class SnakeAIController : MonoBehaviour {
 	void Update() {
 		if (Input.GetButton ("Run")) {
 			// For new snake prefab with snake model, this should be ~4.0f
-			myCollider.radius = 8f;
+			myCollider.radius = 16f;
 		} else {
 			// For new snake prefab with snake model, this should be ~2.0f
-			myCollider.radius = 4f;
+			myCollider.radius = 8f;
 		}
 	}
 
@@ -72,6 +76,7 @@ public class SnakeAIController : MonoBehaviour {
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+
 		if (!patrol && distance < chaseDistance) {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
@@ -82,6 +87,9 @@ public class SnakeAIController : MonoBehaviour {
 			//not alert
 			//myRenderer.material.color = Color.blue;
 			patrol = true;
+		}
+		if (distance <= killDistance) {
+			manager.dead = true;
 		}
 	}
 
