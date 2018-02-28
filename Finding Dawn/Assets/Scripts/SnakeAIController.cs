@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnakeAIController : MonoBehaviour {
 
 	private Transform mainCharacter;
-	private Renderer myRenderer;
+	//private Renderer myRenderer;
 	private SphereCollider myCollider;
 	private CharacterController myCharacterController;
 	private bool patrol = true;
@@ -23,7 +23,7 @@ public class SnakeAIController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		myRenderer = GetComponent<Renderer> ();
+		//myRenderer = GetComponent<Renderer> ();
 		myCharacterController = GetComponent<CharacterController> ();
 		myCollider = GetComponent<SphereCollider> ();
 		anim = GetComponent<Animation> ();
@@ -44,10 +44,10 @@ public class SnakeAIController : MonoBehaviour {
 	void Update() {
 		if (Input.GetButton ("Run")) {
 			// For new snake prefab with snake model, this should be ~4.0f
-			myCollider.radius = .2f;
+			myCollider.radius = 8f;
 		} else {
 			// For new snake prefab with snake model, this should be ~2.0f
-			myCollider.radius = .1f;
+			myCollider.radius = 4f;
 		}
 	}
 
@@ -77,10 +77,10 @@ public class SnakeAIController : MonoBehaviour {
 			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 		} else if (distance < 4.0f) {
 			patrol = false;
-			myRenderer.material.color = Color.red;
+			//myRenderer.material.color = Color.red;
 		} else {
 			//not alert
-			myRenderer.material.color = Color.blue;
+			//myRenderer.material.color = Color.blue;
 			patrol = true;
 		}
 	}
@@ -95,27 +95,27 @@ public class SnakeAIController : MonoBehaviour {
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					myRenderer.material.color = Color.red;
+					//myRenderer.material.color = Color.red;
 					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 				}
 			}
 			// Now check to see if colliding with other snake
 			// **** NOTE: I DON'T THINK THIS WORKS UNLESS SNAKES HAVE A RIGID BODY ****
-			GameObject collidingObject = other.gameObject;
-			SnakeAIController collidingSnake = collidingObject.GetComponent (typeof(SnakeAIController)) as SnakeAIController;
-			if (collidingSnake != null) {
-				//colliding with another Snake AI. Check if that snake is alert
-				if (collidingSnake.isPatrolling ()) {
-					// do nothing
-				} else {
-					// colliding with chasing snake, set this snake to chase
-					patrol = false;
-					Vector3 direction = mainCharacter.position - this.transform.position;
-					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					myRenderer.material.color = Color.red;
-					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-				}
-			}
+//			GameObject collidingObject = other.gameObject;
+//			SnakeAIController collidingSnake = collidingObject.GetComponent (typeof(SnakeAIController)) as SnakeAIController;
+//			if (collidingSnake != null) {
+//				//colliding with another Snake AI. Check if that snake is alert
+//				if (collidingSnake.isPatrolling ()) {
+//					// do nothing
+//				} else {
+//					// colliding with chasing snake, set this snake to chase
+//					patrol = false;
+//					Vector3 direction = mainCharacter.position - this.transform.position;
+//					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+//					//myRenderer.material.color = Color.red;
+//					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+//				}
+//			}
 		}
 	}
 
