@@ -1,0 +1,13 @@
+move	000-030
+stand 	032-077
+idle	079-214
+roar	216-306
+attack1	308-338
+attack2	340-370
+attack3	372-402
+hit1	404-434
+hit2	436-466
+death	468-565
+
+
+Tris: 3596
