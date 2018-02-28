@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 	
-	public float killDistance = 4f;
 	private Transform mainCharacter;
 	public bool dead = false;
 
