@@ -168,6 +168,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &15447351
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -392,6 +393,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &67408403
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1063,6 +1065,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &421804223
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1338,6 +1341,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &491015578
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1597,6 +1601,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &551501607
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1733,6 +1738,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &554415304
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1960,6 +1966,11 @@ Prefab:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 135914366467111318, guid: 583e4fdedc95046ef8f12cc73a618cbc,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 583e4fdedc95046ef8f12cc73a618cbc, type: 2}
   m_IsPrefabParent: 0
@@ -2008,6 +2019,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &575956607
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2518,6 +2530,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &673788686
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2674,6 +2687,78 @@ Transform:
   m_PrefabParentObject: {fileID: 4499932878982664, guid: 05e64b528c4174fc5950fe34dc5e04bd,
     type: 2}
   m_PrefabInternal: {fileID: 1783541199}
+--- !u!1001 &693517386
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 135.61525
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 60.950382
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976725128218166, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490936371269060, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 648509054}
+    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 26304916}
+    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1625251787}
+    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 410532947}
+    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1971123561}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &694538934 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -2763,7 +2848,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &759425842 stripped
 GameObject:
@@ -2921,6 +3006,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &822675444
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3046,7 +3132,7 @@ Transform:
   - {fileID: 488913860}
   - {fileID: 1894571462}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &848559702 stripped
 GameObject:
@@ -3278,7 +3364,7 @@ Transform:
   - {fileID: 661307911}
   - {fileID: 1749863190}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1020035628 stripped
 Transform:
@@ -3334,7 +3420,7 @@ Transform:
   - {fileID: 1177053357}
   - {fileID: 673788690}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061566001 stripped
 GameObject:
@@ -3433,7 +3519,7 @@ RectTransform:
   m_Children:
   - {fileID: 911673661}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3485,6 +3571,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1084107181
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3618,6 +3705,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1084232808
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3860,7 +3948,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1177053355
 MeshRenderer:
@@ -3943,6 +4031,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!4 &1178582064 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4499932878982664, guid: 05e64b528c4174fc5950fe34dc5e04bd,
@@ -4456,6 +4545,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1315793136
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5108,6 +5198,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1552813560
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5312,6 +5403,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1610359798
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5468,6 +5560,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1645199488
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5789,7 +5882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1732147698
 Prefab:
@@ -6342,6 +6435,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &1850247029
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6499,7 +6593,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1854100906 stripped
 GameObject:
@@ -6548,7 +6642,7 @@ Transform:
   - {fileID: 1266671642}
   - {fileID: 1267326556}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1919619354
 Prefab:
@@ -7073,6 +7167,7 @@ MonoBehaviour:
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
+  anim: {fileID: 0}
 --- !u!135 &2074063949
 SphereCollider:
   m_ObjectHideFlags: 0
