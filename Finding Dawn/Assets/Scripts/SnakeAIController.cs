@@ -16,7 +16,7 @@ public class SnakeAIController : MonoBehaviour {
 	int currentWaypoint;
 	public float accuracyWaypoint = 5.0f;
 	public float patrolSpeed = 3.0f;
-	public float alertSpeed = 10.0f;
+	public float alertSpeed = 7.0f;
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
@@ -61,36 +61,25 @@ public class SnakeAIController : MonoBehaviour {
         gravity -= 9.81f * Time.deltaTime;
         direction.y = gravity;
 
+		destroyPatrollingInstantiated ();
 
-		if (patrol && waypoints.Length > 0) {
-			//patrol
-			if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
-				//select random waypoint to patrol towards
-				currentWaypoint = Random.Range(0, waypoints.Length);
-			}
-
-			//rotate towards current waypoint
-			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
-			direction.y = gravity;
-
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
+		if (patrol && waypoints[0] != null) {
+			moveToWaypoint (direction);
 		}
-		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 
+		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		if (!patrol && distance < chaseDistance) {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 		} else if (distance < 4.0f) {
-			if (patrol) {
+			if (patrol && waypoints[0] != null) {
 				//just been found
 				manager.numSnakesFound++;
 			}
-
 			patrol = false;
 		} else {
 			//not alert
-			if (!patrol) {
+			if (!patrol && waypoints[0] != null) {
 				//Just been lost
 				manager.numSnakesFound--;
 			}
@@ -104,7 +93,7 @@ public class SnakeAIController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (patrol) {
+		if (patrol && waypoints[0] != null) {
 			//Checks if colliding with player/camera
 			if (other.tag == "Player" || other.tag == "MainCamera") { 
 				//Checks if player is moving or jumping
@@ -114,11 +103,42 @@ public class SnakeAIController : MonoBehaviour {
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					//myRenderer.material.color = Color.red;
 					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 				}
 			}
 		}
+	}
+
+	/**
+	 * Destorys any snakes that were instantiated in
+	 * and are now patrolling.
+	 **/ 
+	private void destroyPatrollingInstantiated(){
+		if (waypoints [0] == null && patrol) {
+			Destroy (gameObject);
+			manager.numSnakesFound--;
+		}
+	}
+
+	/**
+	 * Selects a random waypoint if close to destination waypoint
+	 * Rotates to new waypoint
+	 * Applies gravity
+	 * Moves snake
+	 **/
+	private void moveToWaypoint(Vector3 direction){
+		//patrol
+		if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
+			//select random waypoint to patrol towards
+			currentWaypoint = Random.Range(0, waypoints.Length);
+		}
+
+		//rotate towards current waypoint
+		direction = waypoints[currentWaypoint].transform.position - this.transform.position;
+		direction.y = gravity;
+
+		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+		myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 	}
 
 }
