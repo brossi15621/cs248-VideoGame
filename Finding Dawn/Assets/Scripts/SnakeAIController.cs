@@ -21,7 +21,8 @@ public class SnakeAIController : MonoBehaviour {
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
 	public Animation anim;
-	public bool patrol = true;
+	private bool patrol = true;
+	private int snakeIndex = -1;
 
 
 	// Use this for initialization
@@ -40,11 +41,6 @@ public class SnakeAIController : MonoBehaviour {
 		mainCharacter = mainCamera.transform;
 	}
 
-	// Public getter for other snakes to communicate
-	public bool isPatrolling() {
-		return patrol;
-	}
-
 	void Update() {
 		if (Input.GetButton ("Run")) {
 			// For new snake prefab with snake model, this should be ~4.0f
@@ -57,10 +53,12 @@ public class SnakeAIController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		//Get movement direction towards main character including gravity
 		Vector3 direction = mainCharacter.position - this.transform.position;
         gravity -= 9.81f * Time.deltaTime;
         direction.y = gravity;
 
+		//Destory any patrolling instantiated snakes
 		destroyPatrollingInstantiated ();
 
 		if (patrol && waypoints[0] != null) {
@@ -74,14 +72,14 @@ public class SnakeAIController : MonoBehaviour {
 		} else if (distance < 4.0f) {
 			if (patrol && waypoints[0] != null) {
 				//just been found
-				manager.numSnakesFound++;
+				manager.numSnakesChasing++;
 			}
 			patrol = false;
 		} else {
 			//not alert
 			if (!patrol && waypoints[0] != null) {
 				//Just been lost
-				manager.numSnakesFound--;
+				manager.numSnakesChasing--;
 			}
 			patrol = true;
 		}
@@ -99,7 +97,7 @@ public class SnakeAIController : MonoBehaviour {
 				//Checks if player is moving or jumping
 				if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
 					//If so, alerts the snake.
-					manager.numSnakesFound++;
+					manager.numSnakesChasing++;
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
@@ -115,8 +113,7 @@ public class SnakeAIController : MonoBehaviour {
 	 **/ 
 	private void destroyPatrollingInstantiated(){
 		if (waypoints [0] == null && patrol) {
-			Destroy (gameObject);
-			manager.numSnakesFound--;
+			manager.destroySnake (gameObject, snakeIndex);
 		}
 	}
 
@@ -139,6 +136,22 @@ public class SnakeAIController : MonoBehaviour {
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 		myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
+	}
+
+	public void setIndex(int index){
+		snakeIndex = index;
+	}
+
+	public int getIndex(){
+		return snakeIndex;
+	}
+
+	public bool getPatrolling(){
+		return patrol;
+	}
+
+	public void setPatrol(bool newPatrol){
+		patrol = newPatrol;
 	}
 
 }
