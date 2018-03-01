@@ -10,7 +10,6 @@ public class GiantAIController : MonoBehaviour {
 	private bool patrol = true;
 	public GameObject[] waypoints;
 	int currentWaypoint;
-	float gravity = -10f;
 	public float accuracyWaypoint = 20.0f;
 	public float patrolSpeed = 3.0f;
 	public float alertSpeed = 7.0f;
@@ -19,6 +18,7 @@ public class GiantAIController : MonoBehaviour {
 	public float findAngle = 50f;
 	public float findDistance = 50f;
 
+	private float gravity = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -33,13 +33,8 @@ public class GiantAIController : MonoBehaviour {
 	void FixedUpdate () {
 		Vector3 direction = mainCharacter.position - this.transform.position;
 		float angle = Vector3.Angle (direction, this.transform.forward);
-		direction.y = 0f;
-		//Maybe adding some gravity things
-		//		if (myCharacterController.isGrounded) {
-		//			direction.y = 0;
-		//		} else {
-		//			direction.y += gravity * Time.deltaTime;
-		//		}
+		gravity -= 9.81f * Time.deltaTime;
+		direction.y = gravity;
 
 
 		if (patrol && waypoints.Length > 0) {
@@ -51,13 +46,8 @@ public class GiantAIController : MonoBehaviour {
 
 			//rotate towards current waypoint
 			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
-			direction.y = 0f;
+			direction.y = gravity;
 
-			//			if (myCharacterController.isGrounded) {
-			//				direction.y = 0;
-			//			} else {
-			//				direction.y += gravity * Time.deltaTime;
-			//			}
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
@@ -74,6 +64,9 @@ public class GiantAIController : MonoBehaviour {
 			patrol = true;
 		}
 
+		if (myCharacterController.isGrounded)
+			gravity = 0f;
+		
 		// Setting character death bool to true
 //		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 //		if (distance <= killDistance) {
