@@ -5,7 +5,8 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - snake: {fileID: 1650640998435616, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

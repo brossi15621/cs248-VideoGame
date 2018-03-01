@@ -8,10 +8,10 @@ public class SnakeAIController : MonoBehaviour {
 	//private Renderer myRenderer;
 	private SphereCollider myCollider;
 	private CharacterController myCharacterController;
-	private bool patrol = true;
 	private GameManagerScript manager;
 	private float deadSensitivity = .19f; //The sensitity where below this number the controller doesn't recognize it as moving left stick
 	private float killDistance = 3f; 
+	private float gravity = 0f;
 	public GameObject[] waypoints;
 	int currentWaypoint;
 	public float accuracyWaypoint = 5.0f;
@@ -21,8 +21,7 @@ public class SnakeAIController : MonoBehaviour {
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
 	public Animation anim;
-
-    private float gravity = 0f;
+	public bool patrol = true;
 
 
 	// Use this for initialization
@@ -83,11 +82,18 @@ public class SnakeAIController : MonoBehaviour {
 			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 		} else if (distance < 4.0f) {
+			if (patrol) {
+				//just been found
+				manager.numSnakesFound++;
+			}
+
 			patrol = false;
-			//myRenderer.material.color = Color.red;
 		} else {
 			//not alert
-			//myRenderer.material.color = Color.blue;
+			if (!patrol) {
+				//Just been lost
+				manager.numSnakesFound--;
+			}
 			patrol = true;
 		}
 		if (distance <= killDistance) {
@@ -104,6 +110,7 @@ public class SnakeAIController : MonoBehaviour {
 				//Checks if player is moving or jumping
 				if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
 					//If so, alerts the snake.
+					manager.numSnakesFound++;
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);

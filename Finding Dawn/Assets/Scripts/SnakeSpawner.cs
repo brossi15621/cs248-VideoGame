@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SnakeSpawner : MonoBehaviour {
 	private GameManagerScript manager;
+	public GameObject snake;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +17,9 @@ public class SnakeSpawner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.tag == "Player" && manager.found) {
-			//release a snake
-			print("Releasing snake");
-		}
+		if (other.tag == "Player" && manager.numSnakesFound > 0) {
+			GameObject currSnake = Instantiate(snake, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+			currSnake.GetComponent<SnakeAIController> ().patrol = false;
+		} 
 	}
 }
