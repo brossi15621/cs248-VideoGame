@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour {
 	
 	private Transform mainCharacter;
 	public bool dead = false;
+	public bool found = false;
 
 	// Use this for initialization
 	void Start () {
