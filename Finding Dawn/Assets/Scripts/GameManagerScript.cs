@@ -6,17 +6,32 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour {
 	
 	private Transform mainCharacter;
+	private Light CharacterLight;
 	public bool dead = false;
 	public int numSnakesChasing = 0;
 	public GameObject[] snakesMade;
 	public int currSnakeIndex = 0;
+	public GameObject CharacterLightObject;
+	private Vector3 startPoint = new Vector3 (115.0f, 5.0f, 60.0f);
+	public static GameManagerScript instance = null;
+
 
 	//Constants
 	private const int maxSnakes = 10;
+	private const float initialLightRange = 24f;
+	private const float rangeDecrement = 4f;
+
 
 	// Use this for initialization
 	void Start () {
-		snakesMade = new GameObject[maxSnakes];
+		if (instance == null ) {
+			instance = this;
+		} else if (instance != this) {
+			Destroy (gameObject);
+		}
+		DontDestroyOnLoad (gameObject);
+		snakesMade = new GameObject[maxSnakes]; 
+		CharacterLight = CharacterLightObject.GetComponent<Light> ();
 	}
 	
 	// Update is called once per frame
@@ -27,7 +42,13 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	void PlayerDeath () {
+		CharacterLight.range -= rangeDecrement;
+		if (CharacterLight.range == 0) {
+			CharacterLight.range = initialLightRange;
+		}
 		SceneManager.LoadScene ("DemoScene");
+		gameObject.transform.position = startPoint;
+		dead = false;
 	}
 
 	/**
