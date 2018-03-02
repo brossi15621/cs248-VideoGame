@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 114551350186266072}
   m_Layer: 0
   m_Name: SnakeAI
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1689,7 +1689,6 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   chaseDistance: 50
   anim: {fileID: 0}
-  patrol: 1
 --- !u!135 &135490936371269060
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -23,6 +23,7 @@ public class SnakeAIController : MonoBehaviour {
 	public Animation anim;
 	private bool patrol = true;
 	private int snakeIndex = -1;
+	private float touchDistance = 6f;
 
 
 	// Use this for initialization
@@ -105,6 +106,14 @@ public class SnakeAIController : MonoBehaviour {
 				}
 			}
 		}
+
+		if (other.gameObject != gameObject && other.tag == "Enemy" && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
+			print("Pushing snakes");
+			GameObject otherEnemy = other.gameObject;
+			Vector3 direction = otherEnemy.transform.position - this.transform.position;
+			myCharacterController.Move (-direction * Time.deltaTime * 1.0f);
+		}
+		
 	}
 
 	/**
