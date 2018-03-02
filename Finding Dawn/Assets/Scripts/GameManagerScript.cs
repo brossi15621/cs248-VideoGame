@@ -32,6 +32,7 @@ public class GameManagerScript : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		snakesMade = new GameObject[maxSnakes]; 
 		CharacterLight = CharacterLightObject.GetComponent<Light> ();
+		Application.targetFrameRate = 200;
 	}
 	
 	// Update is called once per frame
