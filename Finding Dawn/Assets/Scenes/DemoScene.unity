@@ -1470,6 +1470,15 @@ Prefab:
       propertyPath: alertSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1650640998435616, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 135490936371269060, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
   m_IsPrefabParent: 0
@@ -2648,6 +2657,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114436980857777746, guid: c0ad7476b2abc4e32bfa5fdf0151f55a,
+        type: 2}
+      propertyPath: snake
+      value: 
+      objectReference: {fileID: 1650640998435616, guid: 44288cafea3d14608a7e712c811e6071,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0ad7476b2abc4e32bfa5fdf0151f55a, type: 2}
   m_IsPrefabParent: 0
