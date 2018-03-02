@@ -108,7 +108,6 @@ public class SnakeAIController : MonoBehaviour {
 		}
 
 		if (other.gameObject != gameObject && other.tag == "Enemy" && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
-			print("Pushing snakes");
 			GameObject otherEnemy = other.gameObject;
 			Vector3 direction = otherEnemy.transform.position - this.transform.position;
 			myCharacterController.Move (-direction * Time.deltaTime * 1.0f);
