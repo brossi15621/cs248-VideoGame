@@ -47,6 +47,9 @@ public class GameManagerScript : MonoBehaviour {
 		if (CharacterLight.range == 0) {
 			CharacterLight.range = initialLightRange;
 		}
+		snakesMade = new GameObject[maxSnakes];
+		numSnakesChasing = 0;
+		currSnakeIndex = 0;
 		SceneManager.LoadScene ("DemoScene");
 		gameObject.transform.position = startPoint;
 		dead = false;
