@@ -26,6 +26,7 @@ public class SnakeAIController : MonoBehaviour {
 	private float touchDistance = 6f;
 
 
+
 	// Use this for initialization
 	void Start () {
 		//myRenderer = GetComponent<Renderer> ();
@@ -140,7 +141,7 @@ public class SnakeAIController : MonoBehaviour {
 	 **/ 
 	private void destroyPatrollingInstantiated(){
 		if (waypoints [0] == null && patrol) {
-			manager.destroySnake (gameObject, snakeIndex);
+			manager.destroyInstantiatedSnake (gameObject, snakeIndex);
 		}
 	}
 
@@ -163,6 +164,21 @@ public class SnakeAIController : MonoBehaviour {
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 		myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
+	}
+
+	/**
+	 * If this snake is a patrolling snake it is sent
+	 * back to its first way point patrolling.
+	 * If it is an instantiated snake it tells the manager to destroy it.
+	 */ 
+	public void destroySnake(){
+		if (waypoints [0] != null) {
+			gameObject.transform.position = waypoints [0].transform.position;
+			patrol = true;
+			manager.numSnakesChasing--;
+		} else {
+			manager.destroyInstantiatedSnake (gameObject, snakeIndex);
+		}
 	}
 
 	public void setIndex(int index){

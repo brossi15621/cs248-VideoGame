@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 8dc03d1f8fc1c41509f7800b7a949027,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -2864,6 +2865,7 @@ GameObject:
   - component: {fileID: 1730246219}
   - component: {fileID: 1730246218}
   - component: {fileID: 1730246220}
+  - component: {fileID: 1730246221}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Safe Zone
@@ -2930,8 +2932,19 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
-  m_Center: {x: 0, y: 0, z: 50}
+  m_Radius: 25
+  m_Center: {x: 0, y: 0, z: 55}
+--- !u!114 &1730246221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1730246217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6623e21920f14db2939563c110cb1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1733361135
 Prefab:
   m_ObjectHideFlags: 0

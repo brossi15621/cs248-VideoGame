@@ -56,7 +56,7 @@ public class GameManagerScript : MonoBehaviour {
 	 * Only destroys snake and sets to null if a snake has been made in that array.
 	 * Also decrements the count on snakes chasing you by 1. 
 	 */ 
-	public void destroySnake(GameObject snake, int index){
+	public void destroyInstantiatedSnake(GameObject snake, int index){
 		if (snakesMade [index] != null) {
 			Destroy (snakesMade [index]);
 			snakesMade [index] = null;
@@ -80,7 +80,7 @@ public class GameManagerScript : MonoBehaviour {
 		snakeScript.setPatrol (false);
 		snakeScript.setIndex (currSnakeIndex);
 
-		destroySnake (snake, currSnakeIndex);
+		destroyInstantiatedSnake (snake, currSnakeIndex);
 		snakesMade [currSnakeIndex] = snake;
 		currSnakeIndex++;
 		numSnakesChasing++;

@@ -13,4 +13,10 @@ public class SafeZone : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "Enemy") {
+			other.gameObject.GetComponent<SnakeAIController> ().destroySnake ();
+		}
+	}
 }
