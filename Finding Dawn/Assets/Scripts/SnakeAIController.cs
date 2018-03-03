@@ -92,27 +92,46 @@ public class SnakeAIController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
+		//Patrolling non-instantiated snake
 		if (patrol && waypoints[0] != null) {
-			//Checks if colliding with player/camera
-			if (other.tag == "Player" || other.tag == "MainCamera") { 
-				//Checks if player is moving or jumping
-				if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
-					//If so, alerts the snake.
-					manager.numSnakesChasing++;
-					patrol = false;
-					Vector3 direction = mainCharacter.position - this.transform.position;
-					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-				}
-			}
+			lookForPlayer (other);
 		}
 
-		if (other.gameObject != gameObject && other.tag == "Enemy" && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
-			GameObject otherEnemy = other.gameObject;
-			Vector3 direction = otherEnemy.transform.position - this.transform.position;
-			myCharacterController.Move (-direction * Time.deltaTime * 1.0f);
+		//Checks if enemies are close together to push them apart
+		if (other.gameObject != gameObject && (other.tag == "Enemy" || other.tag == "Safe Zone") && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
+			moveAway (other);
 		}
 		
+	}
+
+	/**
+	 * Checks if the player is what the snake ran into
+	 * Then checks if the player is moving at all
+	 * If so, it alerts the snake
+	 */
+	private void lookForPlayer(Collider other){
+		//Checks if colliding with player/camera
+		if (other.tag == "Player" || other.tag == "MainCamera") { 
+			//Checks if player is moving or jumping
+			if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
+				//If so, alerts the snake.
+				manager.numSnakesChasing++;
+				patrol = false;
+				Vector3 direction = mainCharacter.position - this.transform.position;
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+			}
+		}
+	}
+
+	/**
+	 * Moves snake away from object passed in
+	 */ 
+	private void moveAway(Collider other){
+		GameObject otherObject = other.gameObject;
+		Vector3 direction = otherObject.transform.position - this.transform.position;
+		direction.y = 0f;
+		myCharacterController.Move (-direction * Time.deltaTime);
 	}
 
 	/**

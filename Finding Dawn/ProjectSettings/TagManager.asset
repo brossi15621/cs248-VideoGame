@@ -6,8 +6,8 @@ TagManager:
   tags:
   - WaypointHumanoid
   - Terrain
-  - Safezone
   - Enemy
+  - Safe Zone
   layers:
   - Default
   - TransparentFX
