@@ -24,6 +24,7 @@ public class SnakeAIController : MonoBehaviour {
 	private bool patrol = true;
 	private int snakeIndex = -1;
 	private float touchDistance = 6f;
+	private bool isDead = false;
 
 
 
@@ -55,38 +56,40 @@ public class SnakeAIController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		//Get movement direction towards main character including gravity
-		Vector3 direction = mainCharacter.position - this.transform.position;
-        gravity -= 9.81f * Time.deltaTime;
-        direction.y = gravity;
+		if (!isDead) {
+			//Get movement direction towards main character including gravity
+			Vector3 direction = mainCharacter.position - this.transform.position;
+			gravity -= 9.81f * Time.deltaTime;
+			direction.y = gravity;
 
-		if (patrol && waypoints[0] != null) {
-			moveToWaypoint (direction);
-		}
+			if (patrol && waypoints [0] != null) {
+				moveToWaypoint (direction);
+			}
 
-		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
-		if (!patrol && distance < chaseDistance) {
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-		} else if (distance < 4.0f) {
-			if (patrol && waypoints[0] != null) {
-				//just been found
-				manager.numSnakesChasing++;
+			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+			if (!patrol && distance < chaseDistance) {
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+			} else if (distance < 4.0f) {
+				if (patrol && waypoints [0] != null) {
+					//just been found
+					manager.numSnakesChasing++;
+				}
+				patrol = false;
+			} else {
+				//not alert
+				if (!patrol) {
+					//Just been lost
+					destroySnake ();
+				}
+				patrol = true;
 			}
-			patrol = false;
-		} else {
-			//not alert
-			if (!patrol) {
-				//Just been lost
-				destroySnake();
+			if (distance <= killDistance) {
+				manager.dead = true;
 			}
-			patrol = true;
+			if (myCharacterController.isGrounded)
+				gravity = 0f;
 		}
-		if (distance <= killDistance) {
-			manager.dead = true;
-		}
-        if (myCharacterController.isGrounded)
-            gravity = 0f;
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -161,12 +164,29 @@ public class SnakeAIController : MonoBehaviour {
 	 */ 
 	public void destroySnake(){
 		if (waypoints [0] != null) {
-			gameObject.transform.position = waypoints [0].transform.position;
-			patrol = true;
-			manager.numSnakesChasing--;
+			isDead = true;
+			anim.Play ("roar");
+			StartCoroutine (resetTimer (3f));
 		} else {
-			manager.destroyInstantiatedSnake (gameObject, snakeIndex);
+			isDead = true;
+			anim.Play ("death");
+			StartCoroutine (destroyTimer (3f));
 		}
+	}
+
+	public IEnumerator destroyTimer (float time) {
+		yield return new WaitForSeconds (time);
+		manager.destroyInstantiatedSnake (gameObject, snakeIndex);
+	}
+
+	public IEnumerator resetTimer (float time) {
+		yield return new WaitForSeconds (time);
+		gameObject.transform.position = waypoints [0].transform.position;
+		patrol = true;
+		manager.numSnakesChasing--;
+		isDead = false;
+		anim.Play ("move");
+
 	}
 
 	public void setIndex(int index){
