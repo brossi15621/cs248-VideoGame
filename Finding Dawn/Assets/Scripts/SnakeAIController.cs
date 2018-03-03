@@ -26,6 +26,7 @@ public class SnakeAIController : MonoBehaviour {
 	private float touchDistance = 6f;
 
 
+
 	// Use this for initialization
 	void Start () {
 		//myRenderer = GetComponent<Renderer> ();
@@ -59,9 +60,6 @@ public class SnakeAIController : MonoBehaviour {
         gravity -= 9.81f * Time.deltaTime;
         direction.y = gravity;
 
-		//Destory any patrolling instantiated snakes
-		destroyPatrollingInstantiated ();
-
 		if (patrol && waypoints[0] != null) {
 			moveToWaypoint (direction);
 		}
@@ -78,9 +76,9 @@ public class SnakeAIController : MonoBehaviour {
 			patrol = false;
 		} else {
 			//not alert
-			if (!patrol && waypoints[0] != null) {
+			if (!patrol) {
 				//Just been lost
-				manager.numSnakesChasing--;
+				destroySnake();
 			}
 			patrol = true;
 		}
@@ -133,16 +131,7 @@ public class SnakeAIController : MonoBehaviour {
 		direction.y = 0f;
 		myCharacterController.Move (-direction * Time.deltaTime);
 	}
-
-	/**
-	 * Destorys any snakes that were instantiated in
-	 * and are now patrolling.
-	 **/ 
-	private void destroyPatrollingInstantiated(){
-		if (waypoints [0] == null && patrol) {
-			manager.destroySnake (gameObject, snakeIndex);
-		}
-	}
+		
 
 	/**
 	 * Selects a random waypoint if close to destination waypoint
@@ -163,6 +152,21 @@ public class SnakeAIController : MonoBehaviour {
 
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 		myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
+	}
+
+	/**
+	 * If this snake is a patrolling snake it is sent
+	 * back to its first way point patrolling.
+	 * If it is an instantiated snake it tells the manager to destroy it.
+	 */ 
+	public void destroySnake(){
+		if (waypoints [0] != null) {
+			gameObject.transform.position = waypoints [0].transform.position;
+			patrol = true;
+			manager.numSnakesChasing--;
+		} else {
+			manager.destroyInstantiatedSnake (gameObject, snakeIndex);
+		}
 	}
 
 	public void setIndex(int index){
