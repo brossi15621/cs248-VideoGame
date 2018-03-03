@@ -288,6 +288,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114417308708597618, guid: c274d31f7afca4081ba60abb7c6aff85,
+        type: 2}
+      propertyPath: m_MouseLook.PS4XSensitivity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114417308708597618, guid: c274d31f7afca4081ba60abb7c6aff85,
+        type: 2}
+      propertyPath: m_MouseLook.PS4YSensitivity
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
   m_IsPrefabParent: 0
