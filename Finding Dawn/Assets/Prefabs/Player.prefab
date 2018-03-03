@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515564206390404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 114.07569, y: 4.99, z: 60.6}
+  m_LocalPosition: {x: 115, y: 5, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4644794851247026}
@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579508181241946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4334187870210918}
@@ -321,8 +321,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
-  m_Range: 20
+  m_Intensity: 3
+  m_Range: 24
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -368,8 +368,8 @@ MonoBehaviour:
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
-    PS4XSensitivity: 6
-    PS4YSensitivity: 6
+    PS4XSensitivity: 10
+    PS4YSensitivity: 10
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
@@ -463,8 +463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799b8de00b27c44d4b74a50e320893b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killDistance: 4
   dead: 0
+  numSnakesChasing: 0
+  snakesMade: []
+  currSnakeIndex: 0
+  CharacterLightObject: {fileID: 1579508181241946}
 --- !u!124 &124380495370554738
 Behaviour:
   m_ObjectHideFlags: 1

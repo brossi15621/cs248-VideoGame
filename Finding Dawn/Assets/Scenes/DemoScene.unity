@@ -2158,35 +2158,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 108771191590337336, guid: c274d31f7afca4081ba60abb7c6aff85,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114502670046771804, guid: c274d31f7afca4081ba60abb7c6aff85,
-        type: 2}
-      propertyPath: CharacterLight
-      value: 
-      objectReference: {fileID: 1821368141}
-    - target: {fileID: 114502670046771804, guid: c274d31f7afca4081ba60abb7c6aff85,
-        type: 2}
-      propertyPath: CharacterLightObject
-      value: 
-      objectReference: {fileID: 1821368141}
-    - target: {fileID: 114502670046771804, guid: c274d31f7afca4081ba60abb7c6aff85,
-        type: 2}
-      propertyPath: startPoint
-      value: 
-      objectReference: {fileID: 532273440}
-    - target: {fileID: 4361028096759316, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 108771191590337336, guid: c274d31f7afca4081ba60abb7c6aff85,
-        type: 2}
-      propertyPath: m_Range
-      value: 24
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
   m_IsPrefabParent: 0
@@ -3284,11 +3255,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4560701509887776, guid: c0ad7476b2abc4e32bfa5fdf0151f55a,
     type: 2}
   m_PrefabInternal: {fileID: 466258519}
---- !u!1 &1821368141 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1579508181241946, guid: c274d31f7afca4081ba60abb7c6aff85,
-    type: 2}
-  m_PrefabInternal: {fileID: 1277965410}
 --- !u!1001 &1836473806
 Prefab:
   m_ObjectHideFlags: 0
