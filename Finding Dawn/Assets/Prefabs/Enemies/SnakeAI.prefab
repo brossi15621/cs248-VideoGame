@@ -1684,7 +1684,7 @@ MonoBehaviour:
   - {fileID: 0}
   accuracyWaypoint: 5
   patrolSpeed: 3
-  alertSpeed: 7
+  alertSpeed: 10.5
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
@@ -1699,7 +1699,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 6
   m_Center: {x: 0.1, y: 1, z: -0.3}
 --- !u!137 &137742690206547154
 SkinnedMeshRenderer:
