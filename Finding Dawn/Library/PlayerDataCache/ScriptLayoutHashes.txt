@@ -1,6 +1,6 @@
-OSXStandalone
+WindowsStandalone
 SceneListBegin?
-Assets/Scenes/Forest.unity
+Assets/Scenes/DemoScene.unity
 SceneListEnd?
 d0c67bbe009704a98cdb6d70b66b8356 Assembly-CSharp.dll:.SnakeSpawner
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -194,3 +194,4 @@ b7f557c19cce3b6f593e26edfe1ec859 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 f213374f77a87d2d924bc6f656c7092f Assembly-CSharp.dll:.HumanoidAIController
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SafeZone

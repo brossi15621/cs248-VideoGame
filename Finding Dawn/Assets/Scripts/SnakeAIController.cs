@@ -16,7 +16,7 @@ public class SnakeAIController : MonoBehaviour {
 	int currentWaypoint;
 	public float accuracyWaypoint = 5.0f;
 	public float patrolSpeed = 3.0f;
-	public float alertSpeed = 7.0f;
+	public float alertSpeed =11.0f;
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
@@ -42,15 +42,16 @@ public class SnakeAIController : MonoBehaviour {
 		currentWaypoint = Random.Range (0, waypoints.Length);
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera")[0];
 		mainCharacter = mainCamera.transform;
+		alertSpeed = 10.5f;
 	}
 
 	void Update() {
 		if (Input.GetButton ("Run")) {
 			// For new snake prefab with snake model, this should be ~4.0f
-			myCollider.radius = 16f;
+			myCollider.radius = 10f;
 		} else {
 			// For new snake prefab with snake model, this should be ~2.0f
-			myCollider.radius = 8f;
+			myCollider.radius = 6f;
 		}
 	}
 
