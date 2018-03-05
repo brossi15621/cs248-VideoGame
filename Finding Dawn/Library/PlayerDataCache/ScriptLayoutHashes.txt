@@ -1,6 +1,6 @@
-WindowsStandalone
+OSXStandalone
 SceneListBegin?
-Assets/Scenes/DemoScene.unity
+Assets/Scenes/Forest.unity
 SceneListEnd?
 d0c67bbe009704a98cdb6d70b66b8356 Assembly-CSharp.dll:.SnakeSpawner
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset

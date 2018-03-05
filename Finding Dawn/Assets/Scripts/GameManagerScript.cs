@@ -37,6 +37,7 @@ public class GameManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		print (numSnakesChasing);
 		if (dead) {
 			PlayerDeath ();
 		}	
@@ -50,6 +51,7 @@ public class GameManagerScript : MonoBehaviour {
 		snakesMade = new GameObject[maxSnakes];
 		numSnakesChasing = 0;
 		currSnakeIndex = 0;
+		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
 		SceneManager.LoadScene ("DemoScene");
 		gameObject.transform.position = startPoint;
 		dead = false;
