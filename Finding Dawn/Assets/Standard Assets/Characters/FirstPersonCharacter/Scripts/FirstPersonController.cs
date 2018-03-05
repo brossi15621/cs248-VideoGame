@@ -85,6 +85,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
 			m_PreviouslyGrounded = isGrounded;
+
         }
 
 
@@ -227,7 +228,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_IsWalking = !Input.GetButton("Run");
 #endif
             // set the desired speed to be walking or running
+
+
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+
+			//Austin added code for jump speed
+//			if (!m_CharacterController.isGrounded) {
+//				speed *= 1.5f;
+//			}
+
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:

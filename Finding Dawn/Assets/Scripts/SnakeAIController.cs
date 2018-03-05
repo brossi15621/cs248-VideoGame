@@ -164,14 +164,16 @@ public class SnakeAIController : MonoBehaviour {
 	 * If it is an instantiated snake it tells the manager to destroy it.
 	 */ 
 	public void destroySnake(){
-		if (waypoints [0] != null) {
-			isDead = true;
-			anim.Play ("roar");
-			StartCoroutine (resetTimer (3f));
-		} else {
-			isDead = true;
-			anim.Play ("death");
-			StartCoroutine (destroyTimer (3f));
+		if (!isDead) { //Need this in case player puts down 2 lanterns
+			if (waypoints [0] != null) {
+				isDead = true;
+				anim.Play ("roar");
+				StartCoroutine (resetTimer (3f));
+			} else {
+				isDead = true;
+				anim.Play ("death");
+				StartCoroutine (destroyTimer (3f));
+			}
 		}
 	}
 
@@ -184,8 +186,8 @@ public class SnakeAIController : MonoBehaviour {
 		yield return new WaitForSeconds (time);
 		gameObject.transform.position = waypoints [0].transform.position;
 		patrol = true;
-		manager.numSnakesChasing--;
 		isDead = false;
+		manager.numSnakesChasing--;
 		anim.Play ("move");
 
 	}
