@@ -48,14 +48,14 @@ public class GiantAIController : MonoBehaviour {
 			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
 			direction.y = gravity;
 
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+			//this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
 		}
 
 		if ( lineOfSight(angle)) {
 			//AI alerted, pursue main character
 			patrol = false;
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+			//this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 			myRenderer.material.color = Color.red;
 			myCharacterController.Move(this.transform.forward * Time.deltaTime * alertSpeed);
 		} else {
