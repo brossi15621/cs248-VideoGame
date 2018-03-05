@@ -1,4 +1,4 @@
-OSXStandalone
+WindowsStandalone
 SceneListBegin?
 Assets/Scenes/DemoScene.unity
 SceneListEnd?
@@ -197,3 +197,4 @@ e2a8b1de194fe46c1a669153dab57ebb Assembly-CSharp.dll:.AdditionalFPC
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 f213374f77a87d2d924bc6f656c7092f Assembly-CSharp.dll:.HumanoidAIController
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SnakeWarningZone
