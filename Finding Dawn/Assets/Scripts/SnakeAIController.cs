@@ -167,7 +167,7 @@ public class SnakeAIController : MonoBehaviour {
 		if (!isDead) { //Need this in case player puts down 2 lanterns
 			if (waypoints [0] != null) {
 				isDead = true;
-				anim.Play ("roar");
+				anim.Play ("death");
 				StartCoroutine (resetTimer (3f));
 			} else {
 				isDead = true;
