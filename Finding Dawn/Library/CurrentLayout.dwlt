@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 11492
+  controlID: 27
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 11493
+  controlID: 28
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 11494
+  controlID: 29
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -203,8 +203,8 @@ MonoBehaviour:
     y: 0
     width: 308
     height: 455
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -367,14 +367,14 @@ MonoBehaviour:
     height: 434
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 181397.3033989668
+  lastFramingTime: 61.5691579580307
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 147.27443, y: 85.53337, z: 257.44397}
+    m_Target: {x: 198.22998, y: -11.9094925, z: 75.201096}
     speed: 2
-    m_Value: {x: 147.27443, y: 85.53337, z: 257.44397}
+    m_Value: {x: 198.22998, y: -11.9094925, z: 75.201096}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -398,13 +398,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.014733027, y: -0.9768804, z: 0.20088509, w: -0.07164355}
+    m_Target: {x: 0.17038669, y: 0.61905605, z: -0.13993645, w: 0.7537611}
     speed: 2
-    m_Value: {x: -0.014733027, y: -0.9768804, z: 0.20088509, w: -0.07164355}
+    m_Value: {x: 0.17038669, y: 0.61905605, z: -0.13993645, w: 0.7537611}
   m_Size:
-    m_Target: 26.01431
+    m_Target: 145.70044
     speed: 2
-    m_Value: 26.01431
+    m_Value: 145.70044
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -472,28 +472,28 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16280000
+    m_SelectedIDs: 5c2b0000
     m_LastClickedID: 0
-    m_ExpandedIDs: 2238cdff7850cdfff883d0ffa284d0ff2886d0ff0cf6d7ff7cb8e3ffbeb9e3ff7231e5ff66ceeeffaad6eeff5844efff9e59efff127aefff3621f0ff3821f0ff4e21f0ff680cf2ff2e8ff2ff84c2f2ff3ac3f2ffb6c4f2ff1ee9f2ffd4e9f2ff4cebf2ff62e0f6ff5e03f7ffec05f7ffb614f7ff0649faff4249faff464dfaffa264faff2ac9faff42e8fbff680cfdff30b4ffff9efbfffff4ffffff00000000e2580000fa580000bc45010090780400
+    m_ExpandedIDs: b8f4ffff9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Fog
-      m_OriginalName: Fog
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -2636422
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
   m_ExpandedScenes:
-  - Forest
+  - DemoScene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -536,33 +536,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/Austin/Documents/GitHub/cs248-VideoGame/Finding Dawn
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f22b0000
-    m_LastClickedID: 11250
-    m_ExpandedIDs: 00000000ea2700002a280000c6280000ca2900004e2a0000702a0000222b0000142c0000c02c0000322d00002c2e00002e2e0000302e0000a8830400ffffff7f
+    m_SelectedIDs: 642d0000
+    m_LastClickedID: 11620
+    m_ExpandedIDs: 00000000ec27000030280000cc280000e4290000902a0000b22a0000642b0000562c00000a2d00003e2d0000642d0000822d0000ca2f0000cc2f0000ce2f0000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Scripts
-      m_OriginalName: Scripts
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10938
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -576,7 +576,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ea2700002a280000c6280000ca2900004e2a0000702a0000222b0000142c0000c02c0000322d00002c2e00002e2e0000302e0000ffffff7f
+    m_ExpandedIDs: 00000000ec27000030280000cc280000e4290000902a0000b22a0000642b0000562c00000a2d00003e2d0000822d0000ca2f0000cc2f0000ce2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 8c280000e2280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
