@@ -25,6 +25,7 @@ public class SnakeAIController : MonoBehaviour {
 	private int snakeIndex = -1;
 	private float touchDistance = 6f;
 	private bool isDead = false;
+	private Light snakeLight;
 
 
 
@@ -35,6 +36,8 @@ public class SnakeAIController : MonoBehaviour {
 		myCollider = GetComponent<SphereCollider> ();
 		anim = GetComponent<Animation> ();
 		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
+		snakeLight = gameObject.GetComponentInChildren<Light> ();
+		snakeLight.color = Color.green;
 
 		//This is buggy because it is just getting the parent object and not making
 		//an array of its children. personally I think it might be better to just publically enter these.
@@ -114,6 +117,7 @@ public class SnakeAIController : MonoBehaviour {
 	private void lookForPlayer(Collider other){
 		//Checks if colliding with player/camera
 		if (other.tag == "Player" || other.tag == "MainCamera") { 
+			print("Looking");
 			//Checks if player is moving or jumping
 			if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
 				//If so, alerts the snake.
@@ -167,7 +171,7 @@ public class SnakeAIController : MonoBehaviour {
 		if (!isDead) { //Need this in case player puts down 2 lanterns
 			if (waypoints [0] != null) {
 				isDead = true;
-				anim.Play ("roar");
+				anim.Play ("death");
 				StartCoroutine (resetTimer (3f));
 			} else {
 				isDead = true;
