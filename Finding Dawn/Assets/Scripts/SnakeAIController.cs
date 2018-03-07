@@ -103,10 +103,21 @@ public class SnakeAIController : MonoBehaviour {
 		}
 
 		//Checks if enemies are close together to push them apart
-		if (other.gameObject != gameObject && (other.tag == "Enemy" || other.tag == "Safe Zone") && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
+		if (other.gameObject != gameObject && isEnemy(other.tag) && Vector3.Distance (other.gameObject.transform.position, this.transform.position) < touchDistance) {
 			moveAway (other);
 		}
 		
+	}
+
+	/**
+	 * Returns true if the tag passed in is an
+	 * enemy tag. Returns false otherwise.
+	 */ 
+	private bool isEnemy(string tag){
+		if (tag == "Snake" || tag == "Giant" || tag == "Humanoid") {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -117,7 +128,6 @@ public class SnakeAIController : MonoBehaviour {
 	private void lookForPlayer(Collider other){
 		//Checks if colliding with player/camera
 		if (other.tag == "Player" || other.tag == "MainCamera") { 
-			print("Looking");
 			//Checks if player is moving or jumping
 			if (Input.GetAxis ("Horizontal") > deadSensitivity || Input.GetAxis ("Vertical") > deadSensitivity || Input.GetButton ("Jump")) {
 				//If so, alerts the snake.

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiantAIController : MonoBehaviour {
+public class GiantAIController : MonoBehaviour
+{
 
 	private Transform mainCharacter;
 	private CharacterController myCharacterController;
@@ -23,72 +24,87 @@ public class GiantAIController : MonoBehaviour {
 	//private float gravity = 0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		myCharacterController = GetComponent<CharacterController> ();
 		animController = gameObject.GetComponent<Animator> ();
 		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
 		currentWaypoint = Random.Range (0, waypoints.Length);
-		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera")[0];
+		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera") [0];
 		mainCharacter = mainCamera.transform;
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		Vector3 direction = mainCharacter.position - this.transform.position;
-		float angle = Vector3.Angle (direction, this.transform.forward);
-		//gravity -= 9.81f * Time.deltaTime;
-		direction.y = 0f; //gravity;
 
-
-		if (patrol && waypoints.Length > 0) {
-			//patrol
-			if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
-				//select random waypoint to patrol towards
-				currentWaypoint = Random.Range(0, waypoints.Length);
-			}
-
-			//rotate towards current waypoint
-			direction = waypoints[currentWaypoint].transform.position - this.transform.position;
-				direction.y = 0f; // gravity;
-
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-			myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
-		}
-		if ( lineOfSight(angle)) {
-			//AI alerted, pursue main character
-			patrol = false;
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			myCharacterController.Move(this.transform.forward * Time.deltaTime * alertSpeed);
-		} else {
-			//not alert
-			patrol = true;
-		}
-//
-//		if (myCharacterController.isGrounded)
-//			gravity = 0f;
-//		
-		 //Setting character death bool to true
+	void Update(){
+		//Setting character death bool to true
+		print("call");
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		if (distance <= killDistance) {
 			manager.dead = true;
 		}
 	}
 
-	private bool lineOfSight(float angle){
+	// Update is called once per frame
+	void FixedUpdate ()
+	{
+		if (!animController.GetBool ("inSafeZone")) { //If it's not in a safe zone
+			Vector3 direction = mainCharacter.position - this.transform.position;
+			float angle = Vector3.Angle (direction, this.transform.forward);
+			//gravity -= 9.81f * Time.deltaTime;
+			direction.y = 0f; //gravity;
+
+
+			if (patrol && waypoints.Length > 0) {
+				//patrol
+				if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
+					//select random waypoint to patrol towards
+					currentWaypoint = Random.Range (0, waypoints.Length);
+				}
+
+				//rotate towards current waypoint
+				direction = waypoints [currentWaypoint].transform.position - this.transform.position;
+				direction.y = 0f; // gravity;
+
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * patrolSpeed);
+			}
+			if (lineOfSight (angle)) {
+				//AI alerted, pursue main character
+				patrol = false;
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+			} else {
+				//not alert
+				patrol = true;
+			}		
+		}
+	}
+
+
+	private bool lineOfSight (float angle)
+	{
 		//RaycastHit hit;
-		//print(angle + " , " +  Vector3.Distance (mainCharacter.position, this.transform.position));
 		//Check Distance
 		if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
 			//Check angle
-			&& (!patrol || angle < findAngle)
+			&& (!patrol || angle < findAngle)){
 			//Check for barriers
-			//&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) {
-		){
-			animController.SetBool ("Run", true);
+			//&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) ) {
+			animController.SetBool ("isRunning", true);
 			return true;
 		}
-		animController.SetBool ("Run", false);
+		animController.SetBool ("isRunning", false);
 		return false;
+	}
+
+	public void inSafeZone ()
+	{
+		animController.SetBool ("inSafeZone", true);
+	}
+
+	public void outOfSafeZone ()
+	{
+		animController.SetBool ("inSafeZone", false);
 	}
 
 }
