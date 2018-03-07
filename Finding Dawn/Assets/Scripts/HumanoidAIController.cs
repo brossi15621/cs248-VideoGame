@@ -5,7 +5,6 @@ using UnityEngine;
 public class HumanoidAIController : MonoBehaviour {
 
 	    private Transform mainCharacter;
-	    private Renderer myRenderer;
 		private SphereCollider myCollider;
 	    private CharacterController myCharacterController;
 		private Animator myAnimator;
@@ -28,7 +27,6 @@ public class HumanoidAIController : MonoBehaviour {
 
 	    // Use this for initialization
 	    void Start () {
-		        myRenderer = GetComponent<Renderer> ();
 		        myCharacterController = GetComponent<CharacterController> ();
 				myCollider = GetComponent<SphereCollider> ();
 				myAnimator = GetComponent<Animator> ();
@@ -80,16 +78,13 @@ public class HumanoidAIController : MonoBehaviour {
 		        } else if(distance < 4.0f){
 						myAnimator.SetBool("isWalking", false);
 			            patrol = false;
-			            myRenderer.material.color = Color.red;
 		        } else if ( lineOfSight(angle)) {
 			            //AI alerted, pursue main character
 						myAnimator.SetBool("isWalking", false);
 			            patrol = false;
 			            this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			            myRenderer.material.color = Color.red;
 			            myCharacterController.Move(this.transform.forward * Time.deltaTime * alertSpeed);
 		        } else {
-			        myRenderer.material.color = Color.blue;
 			        patrol = true;
 					myAnimator.SetBool("isWalking", true);
 			    }
@@ -124,7 +119,6 @@ public class HumanoidAIController : MonoBehaviour {
 					                    patrol = false;
 					                    Vector3 direction = mainCharacter.position - this.transform.position;
 					                    this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					                    myRenderer.material.color = Color.red;
 					                    myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
 					                }
 				            }
