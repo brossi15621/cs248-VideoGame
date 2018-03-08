@@ -95,10 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5306c1eb1c15a4b3a8c9ece306bd7baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypointParent: {fileID: 0}
   accuracyWaypoint: 20
   patrolSpeed: 3
   alertSpeed: 7
@@ -106,6 +103,7 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   findAngle: 50
   findDistance: 50
+  killDistance: 5
 --- !u!143 &143562181968828412
 CharacterController:
   m_ObjectHideFlags: 1
