@@ -6,8 +6,10 @@ TagManager:
   tags:
   - WaypointHumanoid
   - Terrain
-  - Enemy
   - Safe Zone
+  - Humanoid
+  - Giant
+  - Snake
   layers:
   - Default
   - TransparentFX
