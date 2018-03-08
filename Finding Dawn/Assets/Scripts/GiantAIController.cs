@@ -8,7 +8,8 @@ public class GiantAIController : MonoBehaviour
 	private Transform mainCharacter;
 	private CharacterController myCharacterController;
 	private bool patrol = true;
-	public GameObject[] waypoints;
+	private GameObject[] waypoints;
+	public GameObject waypointParent;
 	int currentWaypoint;
 	public float accuracyWaypoint = 20.0f;
 	public float patrolSpeed = 3.0f;
@@ -29,15 +30,20 @@ public class GiantAIController : MonoBehaviour
 		myCharacterController = GetComponent<CharacterController> ();
 		animController = gameObject.GetComponent<Animator> ();
 		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
-		currentWaypoint = Random.Range (0, waypoints.Length);
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera") [0];
 		mainCharacter = mainCamera.transform;
+
+		//Getting waypoint
+		waypoints = new GameObject[waypointParent.transform.childCount];
+		for (int i = 0; i < waypoints.Length; i++) {
+			waypoints [i] = waypointParent.transform.GetChild (i).gameObject;
+		}
+		currentWaypoint = Random.Range (0, waypoints.Length);
 	}
 
 
 	void Update(){
 		//Setting character death bool to true
-		print("call");
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		if (distance <= killDistance) {
 			manager.dead = true;
@@ -97,14 +103,22 @@ public class GiantAIController : MonoBehaviour
 		return false;
 	}
 
-	public void inSafeZone ()
+	public void inSafeZone (bool isCandle)
 	{
 		animController.SetBool ("inSafeZone", true);
+		if (isCandle) {
+			StartCoroutine (waitOutCandle ());
+		}
 	}
 
 	public void outOfSafeZone ()
 	{
 		animController.SetBool ("inSafeZone", false);
+	}
+
+	IEnumerator waitOutCandle(){
+		yield return new WaitForSeconds(7);
+		outOfSafeZone ();
 	}
 
 }

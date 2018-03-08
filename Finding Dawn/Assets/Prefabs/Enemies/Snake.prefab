@@ -109,7 +109,6 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   chaseDistance: 50
   anim: {fileID: 0}
-  patrol: 1
 --- !u!135 &135768275748350486
 SphereCollider:
   m_ObjectHideFlags: 1

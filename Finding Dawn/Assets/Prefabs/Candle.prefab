@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4597265779957414}
   - component: {fileID: 95215899216399486}
   - component: {fileID: 114074754826106476}
-  - component: {fileID: 135875803488232470}
   - component: {fileID: 114541455316110098}
+  - component: {fileID: 136599561048949506}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191119482599504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.953922, y: 31.294634, z: 11.926063}
+  m_LocalPosition: {x: 120.00686, y: -0.0000019073486, z: 73.63667}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4213669637622682}
@@ -539,8 +539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6623e21920f14db2939563c110cb1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135875803488232470
-SphereCollider:
+  isLantern: 1
+--- !u!136 &136599561048949506
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -548,9 +549,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!198 &198774358532664662
 ParticleSystem:
   m_ObjectHideFlags: 1

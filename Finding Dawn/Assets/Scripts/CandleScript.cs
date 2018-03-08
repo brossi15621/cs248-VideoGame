@@ -28,7 +28,7 @@ public class CandleScript : MonoBehaviour {
 	IEnumerator turnOffLight(){
 		yield return new WaitForSeconds(7);
 		spotLight.enabled = false;
-		gameObject.GetComponent<SphereCollider> ().enabled = false;
+		gameObject.GetComponent<CapsuleCollider> ().enabled = false;
 	}
 
 	IEnumerator waitForBurn(){
