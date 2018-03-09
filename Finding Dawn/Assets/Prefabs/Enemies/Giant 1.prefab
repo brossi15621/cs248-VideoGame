@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 4205536601633678}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Giant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1201,8 +1201,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032472957942904}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 121.37248, y: 0, z: 86.649994}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 10.013062, y: 0, z: 4.932373}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 4882677967551134}
@@ -1212,7 +1212,7 @@ Transform:
   - {fileID: 4230035309094990}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4205536601633678
 Transform:
   m_ObjectHideFlags: 1
@@ -2034,18 +2034,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5306c1eb1c15a4b3a8c9ece306bd7baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypointParent: {fileID: 0}
   accuracyWaypoint: 20
   patrolSpeed: 7
   alertSpeed: 10
-  patrolRotationSpeed: 0.01
+  patrolRotationSpeed: 0.02
   alertRotationSpeed: 0.1
   findAngle: 45
   findDistance: 70
-  killDistance: 5
+  killDistance: 7.5
 --- !u!137 &137408435986630028
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2260,8 +2257,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 100
+  m_Height: 200
+  m_Radius: 75
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

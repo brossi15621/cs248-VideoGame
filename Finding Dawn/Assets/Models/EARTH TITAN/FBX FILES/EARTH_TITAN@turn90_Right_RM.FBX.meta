@@ -1,0 +1,389 @@
+fileFormatVersion: 2
+guid: 70d8f379fbe86a34bbaec5a12bfa63ad
+timeCreated: 1443045074
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: EARTH_TITAN_
+    100004: EARTH_TITAN_ Head
+    100006: EARTH_TITAN_ L Calf
+    100008: EARTH_TITAN_ L Clavicle
+    100010: EARTH_TITAN_ L Finger0
+    100012: EARTH_TITAN_ L Finger01
+    100014: EARTH_TITAN_ L Finger02
+    100016: EARTH_TITAN_ L Finger1
+    100018: EARTH_TITAN_ L Finger11
+    100020: EARTH_TITAN_ L Finger12
+    100022: EARTH_TITAN_ L Finger2
+    100024: EARTH_TITAN_ L Finger21
+    100026: EARTH_TITAN_ L Finger22
+    100028: EARTH_TITAN_ L Foot
+    100030: EARTH_TITAN_ L Forearm
+    100032: EARTH_TITAN_ L Hand
+    100034: EARTH_TITAN_ L Thigh
+    100036: EARTH_TITAN_ L Toe0
+    100038: EARTH_TITAN_ L Toe1
+    100040: EARTH_TITAN_ L Toe2
+    100042: EARTH_TITAN_ L UpperArm
+    100044: EARTH_TITAN_ Neck
+    100046: EARTH_TITAN_ Neck1
+    100048: EARTH_TITAN_ Neck2
+    100050: EARTH_TITAN_ Neck3
+    100052: EARTH_TITAN_ Pelvis
+    100054: EARTH_TITAN_ Ponytail1
+    100056: EARTH_TITAN_ R Calf
+    100058: EARTH_TITAN_ R Clavicle
+    100060: EARTH_TITAN_ R Finger0
+    100062: EARTH_TITAN_ R Finger01
+    100064: EARTH_TITAN_ R Finger02
+    100066: EARTH_TITAN_ R Finger1
+    100068: EARTH_TITAN_ R Finger11
+    100070: EARTH_TITAN_ R Finger12
+    100072: EARTH_TITAN_ R Finger2
+    100074: EARTH_TITAN_ R Finger21
+    100076: EARTH_TITAN_ R Finger22
+    100078: EARTH_TITAN_ R Foot
+    100080: EARTH_TITAN_ R Forearm
+    100082: EARTH_TITAN_ R Hand
+    100084: EARTH_TITAN_ R Thigh
+    100086: EARTH_TITAN_ R Toe0
+    100088: EARTH_TITAN_ R Toe1
+    100090: EARTH_TITAN_ R Toe2
+    100092: EARTH_TITAN_ R UpperArm
+    100094: EARTH_TITAN_ Spine
+    100096: EARTH_TITAN_ Spine1
+    100098: EARTH_TITAN_CHAIN_LINK_1
+    100100: EARTH_TITAN_CHAIN_LINK_2
+    100102: EARTH_TITAN_CHAIN_LINK_3
+    100104: EARTH_TITAN_CHAIN_LINK_4
+    100106: EARTH_TITAN_CHAIN_LINK_5
+    100108: EARTH_TITAN_NECKLACE
+    400000: //RootNode
+    400002: EARTH_TITAN_
+    400004: EARTH_TITAN_ Head
+    400006: EARTH_TITAN_ L Calf
+    400008: EARTH_TITAN_ L Clavicle
+    400010: EARTH_TITAN_ L Finger0
+    400012: EARTH_TITAN_ L Finger01
+    400014: EARTH_TITAN_ L Finger02
+    400016: EARTH_TITAN_ L Finger1
+    400018: EARTH_TITAN_ L Finger11
+    400020: EARTH_TITAN_ L Finger12
+    400022: EARTH_TITAN_ L Finger2
+    400024: EARTH_TITAN_ L Finger21
+    400026: EARTH_TITAN_ L Finger22
+    400028: EARTH_TITAN_ L Foot
+    400030: EARTH_TITAN_ L Forearm
+    400032: EARTH_TITAN_ L Hand
+    400034: EARTH_TITAN_ L Thigh
+    400036: EARTH_TITAN_ L Toe0
+    400038: EARTH_TITAN_ L Toe1
+    400040: EARTH_TITAN_ L Toe2
+    400042: EARTH_TITAN_ L UpperArm
+    400044: EARTH_TITAN_ Neck
+    400046: EARTH_TITAN_ Neck1
+    400048: EARTH_TITAN_ Neck2
+    400050: EARTH_TITAN_ Neck3
+    400052: EARTH_TITAN_ Pelvis
+    400054: EARTH_TITAN_ Ponytail1
+    400056: EARTH_TITAN_ R Calf
+    400058: EARTH_TITAN_ R Clavicle
+    400060: EARTH_TITAN_ R Finger0
+    400062: EARTH_TITAN_ R Finger01
+    400064: EARTH_TITAN_ R Finger02
+    400066: EARTH_TITAN_ R Finger1
+    400068: EARTH_TITAN_ R Finger11
+    400070: EARTH_TITAN_ R Finger12
+    400072: EARTH_TITAN_ R Finger2
+    400074: EARTH_TITAN_ R Finger21
+    400076: EARTH_TITAN_ R Finger22
+    400078: EARTH_TITAN_ R Foot
+    400080: EARTH_TITAN_ R Forearm
+    400082: EARTH_TITAN_ R Hand
+    400084: EARTH_TITAN_ R Thigh
+    400086: EARTH_TITAN_ R Toe0
+    400088: EARTH_TITAN_ R Toe1
+    400090: EARTH_TITAN_ R Toe2
+    400092: EARTH_TITAN_ R UpperArm
+    400094: EARTH_TITAN_ Spine
+    400096: EARTH_TITAN_ Spine1
+    400098: EARTH_TITAN_CHAIN_LINK_1
+    400100: EARTH_TITAN_CHAIN_LINK_2
+    400102: EARTH_TITAN_CHAIN_LINK_3
+    400104: EARTH_TITAN_CHAIN_LINK_4
+    400106: EARTH_TITAN_CHAIN_LINK_5
+    400108: EARTH_TITAN_NECKLACE
+    7400000: turn90_Right_RM
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: turn90_Right_RM
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EARTH_TITAN_
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh/EARTH_TITAN_
+          L Calf
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh/EARTH_TITAN_
+          L Calf/EARTH_TITAN_ L Foot
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh/EARTH_TITAN_
+          L Calf/EARTH_TITAN_ L Foot/EARTH_TITAN_ L Toe0
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh/EARTH_TITAN_
+          L Calf/EARTH_TITAN_ L Foot/EARTH_TITAN_ L Toe1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ L Thigh/EARTH_TITAN_
+          L Calf/EARTH_TITAN_ L Foot/EARTH_TITAN_ L Toe2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh/EARTH_TITAN_
+          R Calf
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh/EARTH_TITAN_
+          R Calf/EARTH_TITAN_ R Foot
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh/EARTH_TITAN_
+          R Calf/EARTH_TITAN_ R Foot/EARTH_TITAN_ R Toe0
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh/EARTH_TITAN_
+          R Calf/EARTH_TITAN_ R Foot/EARTH_TITAN_ R Toe1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ R Thigh/EARTH_TITAN_
+          R Calf/EARTH_TITAN_ R Foot/EARTH_TITAN_ R Toe2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger0
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger0/EARTH_TITAN_ L Finger01
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger0/EARTH_TITAN_ L Finger01/EARTH_TITAN_ L Finger02
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger1/EARTH_TITAN_ L Finger11
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger1/EARTH_TITAN_ L Finger11/EARTH_TITAN_ L Finger12
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger2/EARTH_TITAN_ L Finger21
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ L Clavicle/EARTH_TITAN_ L UpperArm/EARTH_TITAN_ L Forearm/EARTH_TITAN_
+          L Hand/EARTH_TITAN_ L Finger2/EARTH_TITAN_ L Finger21/EARTH_TITAN_ L Finger22
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_
+          Head
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_
+          Head/EARTH_TITAN_ Ponytail1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE/EARTH_TITAN_CHAIN_LINK_1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE/EARTH_TITAN_CHAIN_LINK_1/EARTH_TITAN_CHAIN_LINK_2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE/EARTH_TITAN_CHAIN_LINK_1/EARTH_TITAN_CHAIN_LINK_2/EARTH_TITAN_CHAIN_LINK_3
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE/EARTH_TITAN_CHAIN_LINK_1/EARTH_TITAN_CHAIN_LINK_2/EARTH_TITAN_CHAIN_LINK_3/EARTH_TITAN_CHAIN_LINK_4
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ Neck1/EARTH_TITAN_ Neck2/EARTH_TITAN_ Neck3/EARTH_TITAN_NECKLACE/EARTH_TITAN_CHAIN_LINK_1/EARTH_TITAN_CHAIN_LINK_2/EARTH_TITAN_CHAIN_LINK_3/EARTH_TITAN_CHAIN_LINK_4/EARTH_TITAN_CHAIN_LINK_5
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger0
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger0/EARTH_TITAN_ R Finger01
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger0/EARTH_TITAN_ R Finger01/EARTH_TITAN_ R Finger02
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger1
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger1/EARTH_TITAN_ R Finger11
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger1/EARTH_TITAN_ R Finger11/EARTH_TITAN_ R Finger12
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger2
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger2/EARTH_TITAN_ R Finger21
+        weight: 1
+      - path: EARTH_TITAN_/EARTH_TITAN_ Pelvis/EARTH_TITAN_ Spine/EARTH_TITAN_ Spine1/EARTH_TITAN_
+          Neck/EARTH_TITAN_ R Clavicle/EARTH_TITAN_ R UpperArm/EARTH_TITAN_ R Forearm/EARTH_TITAN_
+          R Hand/EARTH_TITAN_ R Finger2/EARTH_TITAN_ R Finger21/EARTH_TITAN_ R Finger22
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: EARTH_TITAN_
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 722d62602a3be0f47a73c1d193b6a2c2,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
