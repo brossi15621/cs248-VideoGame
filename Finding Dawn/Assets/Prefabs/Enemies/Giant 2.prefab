@@ -771,8 +771,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4737284047078826}
   - component: {fileID: 95087050735455100}
-  - component: {fileID: 143973110703740750}
   - component: {fileID: 114191531456181872}
+  - component: {fileID: 143041519870520360}
   m_Layer: 0
   m_Name: Giant 2
   m_TagString: Giant
@@ -1785,7 +1785,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.4134295, y: -0.13126326, z: -0.039424896}
     m_Extent: {x: 6.2235785, y: 4.921184, z: 8.598342}
   m_DirtyAABB: 0
---- !u!143 &143973110703740750
+--- !u!143 &143041519870520360
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1799,6 +1799,6 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.8
-  m_MinMoveDistance: 0
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
