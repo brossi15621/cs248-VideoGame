@@ -930,15 +930,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
-      propertyPath: m_Name
-      value: Giant 2 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 114191531456181872, guid: 2f109a29be97f4d6fbef350783840fb8,
         type: 2}
       propertyPath: waypointParent
       value: 
       objectReference: {fileID: 1992536112}
+    - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
+      propertyPath: m_Name
+      value: Giant 2 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
   m_IsPrefabParent: 0
@@ -1456,15 +1456,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
-      propertyPath: m_Name
-      value: Giant 2 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 114191531456181872, guid: 2f109a29be97f4d6fbef350783840fb8,
         type: 2}
       propertyPath: waypointParent
       value: 
       objectReference: {fileID: 1050037428}
+    - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
+      propertyPath: m_Name
+      value: Giant 2 (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
   m_IsPrefabParent: 0
