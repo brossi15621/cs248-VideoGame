@@ -1684,6 +1684,7 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   findAngle: 50
   findDistance: 50
+  chaseDistance: 85
   killDistance: 5
 --- !u!137 &137658327963848324
 SkinnedMeshRenderer:
