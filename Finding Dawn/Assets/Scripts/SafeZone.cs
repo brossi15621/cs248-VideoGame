@@ -25,10 +25,4 @@ public class SafeZone : MonoBehaviour {
 
 		}
 	}
-
-	private void GiantEnter(){
-		if (isLantern) {
-
-		}
-	}
 }

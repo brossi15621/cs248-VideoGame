@@ -9,6 +9,7 @@ public class CandleScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameObject.GetComponent<SafeZone> ().isLantern = true;
 		spotLight = gameObject.GetComponentInChildren<Light>();
 		deminish = false;
 		StartCoroutine (waitForBurn ());

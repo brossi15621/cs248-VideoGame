@@ -111,18 +111,32 @@ public class GiantAIController : MonoBehaviour
 		animController.SetBool ("inSafeZone", true);
 		if (isCandle) {
 			StartCoroutine (waitOutCandle ());
+		} else {
+			StartCoroutine (leaveSafeZone ());
 		}
 	}
-
-	public void outOfSafeZone ()
-	{
+		
+	/**
+	 * Has giant stay in safe zone until player is out of their sight.
+	 * Then giant returns back to its way points
+	 */ 
+	IEnumerator leaveSafeZone(){
+		patrol = true;
+		while (true) {
+			yield return new WaitForSeconds (7);
+			Vector3 direction = mainCharacter.position - this.transform.position;
+			float angle = Vector3.Angle (direction, this.transform.forward);
+			if (!lineOfSight(angle)) {
+				break;
+			}
+		}
 		animController.SetBool ("inSafeZone", false);
 	}
 
 	IEnumerator waitOutCandle ()
 	{
 		yield return new WaitForSeconds (7);
-		outOfSafeZone ();
+		animController.SetBool ("inSafeZone", false);
 	}
 
 }
