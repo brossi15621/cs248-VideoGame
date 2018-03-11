@@ -18,6 +18,7 @@ public class GiantAIController : MonoBehaviour
 	public float alertRotationSpeed = 0.1f;
 	public float findAngle = 50f;
 	public float findDistance = 50f;
+	public float chaseDistance = 85f;
 	public float killDistance = 5f;
 	private Animator animController;
 	private GameManagerScript manager;
@@ -91,12 +92,14 @@ public class GiantAIController : MonoBehaviour
 	private bool lineOfSight (float angle)
 	{
 		RaycastHit hit;
+		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		//Check Distance
-		if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
+
+		if ( (patrol && distance < findDistance) || (!patrol && distance < chaseDistance)
 			//Check angle
 		    && (!patrol || angle < findAngle)) {
 			//In finding area now check for barriers
-			if (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player") {
+			if (!patrol || (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
 				//If there is a direct line between player and giant. Meaning terrain is not in way.
 				animController.SetBool ("isRunning", true);
 				return true;
