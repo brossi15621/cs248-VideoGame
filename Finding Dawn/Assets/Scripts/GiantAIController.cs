@@ -18,6 +18,7 @@ public class GiantAIController : MonoBehaviour
 	public float alertRotationSpeed = 0.1f;
 	public float findAngle = 50f;
 	public float findDistance = 50f;
+	public float chaseDistance = 85f;
 	public float killDistance = 5f;
 	private Animator animController;
 	private GameManagerScript manager;
@@ -42,7 +43,8 @@ public class GiantAIController : MonoBehaviour
 	}
 
 
-	void Update(){
+	void Update ()
+	{
 		//Setting character death bool to true
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		if (distance <= killDistance) {
@@ -89,15 +91,19 @@ public class GiantAIController : MonoBehaviour
 
 	private bool lineOfSight (float angle)
 	{
-		//RaycastHit hit;
+		RaycastHit hit;
+		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		//Check Distance
-		if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
+
+		if ( (patrol && distance < findDistance) || (!patrol && distance < chaseDistance)
 			//Check angle
-			&& (!patrol || angle < findAngle)){
-			//Check for barriers
-			//&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) ) {
-			animController.SetBool ("isRunning", true);
-			return true;
+		    && (!patrol || angle < findAngle)) {
+			//In finding area now check for barriers
+			if (!patrol || (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
+				//If there is a direct line between player and giant. Meaning terrain is not in way.
+				animController.SetBool ("isRunning", true);
+				return true;
+			}
 		}
 		animController.SetBool ("isRunning", false);
 		return false;
@@ -108,17 +114,32 @@ public class GiantAIController : MonoBehaviour
 		animController.SetBool ("inSafeZone", true);
 		if (isCandle) {
 			StartCoroutine (waitOutCandle ());
+		} else {
+			StartCoroutine (leaveSafeZone ());
 		}
 	}
-
-	public void outOfSafeZone ()
-	{
+		
+	/**
+	 * Has giant stay in safe zone until player is out of their sight.
+	 * Then giant returns back to its way points
+	 */ 
+	IEnumerator leaveSafeZone(){
+		patrol = true;
+		while (true) {
+			yield return new WaitForSeconds (7);
+			Vector3 direction = mainCharacter.position - this.transform.position;
+			float angle = Vector3.Angle (direction, this.transform.forward);
+			if (!lineOfSight(angle)) {
+				break;
+			}
+		}
 		animController.SetBool ("inSafeZone", false);
 	}
 
-	IEnumerator waitOutCandle(){
-		yield return new WaitForSeconds(7);
-		outOfSafeZone ();
+	IEnumerator waitOutCandle ()
+	{
+		yield return new WaitForSeconds (7);
+		animController.SetBool ("inSafeZone", false);
 	}
 
 }

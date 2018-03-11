@@ -1469,8 +1469,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894472947037512}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 128.4, y: 0, z: 122.3}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -135.28131, y: 54.567383, z: -19.273941}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_Children:
   - {fileID: 4411132709750236}
@@ -1684,6 +1684,7 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   findAngle: 50
   findDistance: 50
+  chaseDistance: 85
   killDistance: 5
 --- !u!137 &137658327963848324
 SkinnedMeshRenderer:
@@ -1794,10 +1795,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 10
-  m_Radius: 5
+  m_Height: 1
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.8
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}

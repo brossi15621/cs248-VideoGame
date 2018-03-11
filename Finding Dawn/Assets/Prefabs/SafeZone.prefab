@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 108517487755431032}
   - component: {fileID: 135715929119330770}
   - component: {fileID: 114937436266343266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SafeZone
   m_TagString: Safe Zone
   m_Icon: {fileID: 0}
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6623e21920f14db2939563c110cb1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLantern: 0
 --- !u!135 &135715929119330770
 SphereCollider:
   m_ObjectHideFlags: 1

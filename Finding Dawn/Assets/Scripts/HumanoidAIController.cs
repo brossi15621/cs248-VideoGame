@@ -20,7 +20,7 @@ public class HumanoidAIController : MonoBehaviour {
 	    public float alertRotationSpeed = 0.1f;
 	    public float findAngle = 60f;
 	    public float findDistance = 40f;
-	    public float chaseDistance = 50f;
+	    public float chaseDistance = 70f;
 		public float killDistance = 4f;
 		
 
@@ -99,16 +99,20 @@ public class HumanoidAIController : MonoBehaviour {
 		    }
 
 		private bool lineOfSight(float angle){
-			RaycastHit hit;
-			//Check Distance
-			if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
-				//Check angle
+		RaycastHit hit;
+		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+		//Check Distance
+
+		if ( (patrol && distance < findDistance) || (!patrol && distance < chaseDistance)
+			//Check angle
 			&& (!patrol || angle < findAngle)) {
-				//Check for barriers
-				//&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) {
+			//In finding area now check for barriers
+			if (!patrol || (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
+				//If there is a direct line between player and giant. Meaning terrain is not in way.
 				return true;
 			}
-			return false;
+		}
+		return false;
 		}
 
 	    void OnTriggerStay(Collider other) {

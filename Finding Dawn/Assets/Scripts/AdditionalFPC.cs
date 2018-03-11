@@ -18,9 +18,12 @@ public class AdditionalFPC : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//Candle things
 		if (myController.isGrounded && Input.GetButtonDown("Candle")) {
 			placeCandle ();
 		}
+
 	}
 
 	/**
