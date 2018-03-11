@@ -9,7 +9,7 @@ public class SnakeAIController : MonoBehaviour {
 	private SphereCollider myCollider;
 	private CharacterController myCharacterController;
 	private GameManagerScript manager;
-	private float deadSensitivity = .19f; //The sensitity where below this number the controller doesn't recognize it as moving left stick
+	private float deadSensitivity = .05f; //The sensitity where below this number the controller doesn't recognize it as moving left stick
 	private float killDistance = 3f; 
 	private float gravity = 0f;
 	public GameObject[] waypoints;

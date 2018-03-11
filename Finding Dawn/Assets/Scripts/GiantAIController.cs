@@ -42,7 +42,8 @@ public class GiantAIController : MonoBehaviour
 	}
 
 
-	void Update(){
+	void Update ()
+	{
 		//Setting character death bool to true
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		if (distance <= killDistance) {
@@ -89,15 +90,17 @@ public class GiantAIController : MonoBehaviour
 
 	private bool lineOfSight (float angle)
 	{
-		//RaycastHit hit;
+		RaycastHit hit;
 		//Check Distance
 		if (Vector3.Distance (mainCharacter.position, this.transform.position) < findDistance
 			//Check angle
-			&& (!patrol || angle < findAngle)){
-			//Check for barriers
-			//&& ( !patrol || (Physics.Linecast (transform.position, mainCharacter.position, out hit) && hit.transform.tag != "Terrain"))) ) {
-			animController.SetBool ("isRunning", true);
-			return true;
+		    && (!patrol || angle < findAngle)) {
+			//In finding area now check for barriers
+			if (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player") {
+				//If there is a direct line between player and giant. Meaning terrain is not in way.
+				animController.SetBool ("isRunning", true);
+				return true;
+			}
 		}
 		animController.SetBool ("isRunning", false);
 		return false;
@@ -116,8 +119,9 @@ public class GiantAIController : MonoBehaviour
 		animController.SetBool ("inSafeZone", false);
 	}
 
-	IEnumerator waitOutCandle(){
-		yield return new WaitForSeconds(7);
+	IEnumerator waitOutCandle ()
+	{
+		yield return new WaitForSeconds (7);
 		outOfSafeZone ();
 	}
 
