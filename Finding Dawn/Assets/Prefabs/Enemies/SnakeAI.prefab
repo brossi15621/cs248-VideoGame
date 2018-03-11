@@ -1781,7 +1781,7 @@ MonoBehaviour:
   - {fileID: 0}
   accuracyWaypoint: 5
   patrolSpeed: 3
-  alertSpeed: 7
+  alertSpeed: 10
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   chaseDistance: 50
