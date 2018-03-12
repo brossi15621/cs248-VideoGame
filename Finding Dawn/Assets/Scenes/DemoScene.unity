@@ -4372,15 +4372,6 @@ Prefab:
       propertyPath: waypointParent
       value: 
       objectReference: {fileID: 1186853492}
-    - target: {fileID: 1190492177390484, guid: ed2a732af4af644cd9f541274840c903, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 95815425665617186, guid: ed2a732af4af644cd9f541274840c903,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed2a732af4af644cd9f541274840c903, type: 2}
   m_IsPrefabParent: 0
@@ -7920,7 +7911,7 @@ Prefab:
       objectReference: {fileID: 243953883}
     - target: {fileID: 1190492177390484, guid: ed2a732af4af644cd9f541274840c903, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95815425665617186, guid: ed2a732af4af644cd9f541274840c903,
         type: 2}

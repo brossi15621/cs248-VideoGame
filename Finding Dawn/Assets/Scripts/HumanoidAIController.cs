@@ -14,6 +14,7 @@ public class HumanoidAIController : MonoBehaviour
 	private float gravity = 0f;
 	private bool movingBack = false;
 	private bool isJumpingLantern = false;
+	private bool dead = false;
 	int currentWaypoint;
 	private GameObject[] waypoints;
 	public GameObject waypointParent;
@@ -60,7 +61,7 @@ public class HumanoidAIController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if (!movingBack) {
+		if (!movingBack && !dead) {
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			gravity -= 9.81f * Time.deltaTime;
@@ -110,9 +111,9 @@ public class HumanoidAIController : MonoBehaviour
 			if (distance <= killDistance) {
 				manager.dead = true;
 			}
-		} else {
+		} else if(movingBack && !dead){
 			myCharacterController.Move (transform.forward * Time.deltaTime * -3f);
-		}
+		} 
 			
 	}
 
@@ -156,6 +157,9 @@ public class HumanoidAIController : MonoBehaviour
 			movingBack = true;
 			myAnimator.SetTrigger ("inLantern");
 			StartCoroutine (stumble ());
+		} else {
+			dead = true;
+			myAnimator.SetBool ("inSafeZone", true);
 		}
 	}
 
@@ -164,11 +168,6 @@ public class HumanoidAIController : MonoBehaviour
 		movingBack = false;
 		yield return new WaitForSeconds (.5f);
 		isJumpingLantern = false;
-//		alertSpeed = -3f;
-//		stopMoving = false;
-//		yield return new WaitForSeconds (2);
-//		isJumpingLantern = false;
-//		alertSpeed = 11f;
 	}
 
 }
