@@ -101,7 +101,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_RunSpeed = Mathf.Clamp( m_WalkSpeed + ((maxSprintSpeed - m_WalkSpeed) * (sprintTimeLeft / 6f)), m_WalkSpeed, maxSprintSpeed);
 			}
 
-			if (Input.GetButton ("Run")) {
+			if (Input.GetButton ("Run") && (Input.GetAxis("Horizontal") > .05 || Input.GetAxis("Vertical") > .05)) {
 				sprintTimeLeft = Mathf.Clamp (sprintTimeLeft - timePassed, 0f, 9f);
 			} else {
 				sprintTimeLeft = Mathf.Clamp (sprintTimeLeft + timePassed, 0f, 9f);
