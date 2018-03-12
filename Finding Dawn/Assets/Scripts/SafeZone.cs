@@ -22,7 +22,7 @@ public class SafeZone : MonoBehaviour {
 		} else if (other.tag == "Giant") {
 			other.gameObject.GetComponent<GiantAIController> ().inSafeZone (isLantern);
 		} else if (other.tag == "Humanoid") {
-
+			other.gameObject.GetComponent<HumanoidAIController> ().enterSafeZone (isLantern);
 		}
 	}
 }

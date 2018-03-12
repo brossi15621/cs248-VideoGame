@@ -48,9 +48,11 @@ public class GiantAIController : MonoBehaviour
 	void Update ()
 	{
 		//Setting character death bool to true
-		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
-		if (distance <= killDistance) {
-			manager.dead = true;
+		if (!animController.GetBool ("inSafeZone")) {
+			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+			if (distance <= killDistance) {
+				manager.dead = true;
+			}
 		}
 	}
 
