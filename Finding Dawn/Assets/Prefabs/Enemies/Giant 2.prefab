@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 4737284047078826}
   - component: {fileID: 95087050735455100}
   - component: {fileID: 114191531456181872}
-  - component: {fileID: 143041519870520360}
+  - component: {fileID: 143891128713357284}
   m_Layer: 0
   m_Name: Giant 2
   m_TagString: Giant
@@ -1785,7 +1785,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.4134295, y: -0.13126326, z: -0.039424896}
     m_Extent: {x: 6.2235785, y: 4.921184, z: 8.598342}
   m_DirtyAABB: 0
---- !u!143 &143041519870520360
+--- !u!143 &143891128713357284
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -6,7 +6,8 @@ public class GiantAIController : MonoBehaviour
 {
 
 	private Transform mainCharacter;
-	private Rigidbody myRigidbody;
+	//private Rigidbody myRigidbody;
+	private CharacterController myCharacterController;
 	private bool patrol = true;
 	private GameObject[] waypoints;
 	public GameObject waypointParent;
@@ -28,7 +29,8 @@ public class GiantAIController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		myRigidbody = gameObject.GetComponent<Rigidbody> ();
+		//myRigidbody = gameObject.GetComponent<Rigidbody> ();
+		myCharacterController = gameObject.GetComponent<CharacterController>();
 		animController = gameObject.GetComponent<Animator> ();
 		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera") [0];
@@ -72,14 +74,18 @@ public class GiantAIController : MonoBehaviour
 				//rotate towards current waypoint
 				direction = waypoints [currentWaypoint].transform.position - this.transform.position;
 				direction.y = 0f; // gravity;
-				myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-				myRigidbody.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * patrolSpeed);
+				//myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+				//myRigidbody.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * patrolSpeed);
+				transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+				myCharacterController.Move (transform.forward * Time.deltaTime * patrolSpeed);
 			}
 			if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				patrol = false;
-				myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myRigidbody.MovePosition (transform.position + transform.forward * Time.fixedDeltaTime * alertSpeed);
+				//myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				//myRigidbody.MovePosition (transform.position + transform.forward * Time.fixedDeltaTime * alertSpeed);
+				transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (transform.forward * Time.deltaTime * alertSpeed);
 			} else {
 				//not alert
 				patrol = true;
@@ -98,7 +104,7 @@ public class GiantAIController : MonoBehaviour
 			//Check angle
 		    && (!patrol || angle < findAngle)) {
 			//In finding area now check for barriers
-			if (!patrol || (!Physics.Linecast (myRigidbody.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
+			if (!patrol || (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
 				//If there is a direct line between player and giant. Meaning terrain is not in way.
 				animController.SetBool ("isRunning", true);
 				return true;
