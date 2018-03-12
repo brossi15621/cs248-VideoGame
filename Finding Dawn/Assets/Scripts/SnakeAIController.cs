@@ -70,12 +70,12 @@ public class SnakeAIController : MonoBehaviour {
 			if (!patrol && distance < chaseDistance) {
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-			} else if (distance < 4.0f) {
-				if (patrol && waypoints [0] != null) {
-					//just been found
-					manager.numSnakesChasing++;
-				}
-				patrol = false;
+//			} else if (distance < 4.0f) {
+//				if (patrol && waypoints [0] != null) {
+//					//just been found
+//					manager.numSnakesChasing++;
+//				}
+//				patrol = false;
 			} else {
 				//not alert
 				if (!patrol) {

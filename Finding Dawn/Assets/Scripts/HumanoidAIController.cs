@@ -12,6 +12,8 @@ public class HumanoidAIController : MonoBehaviour
 	private GameManagerScript manager;
 	private bool patrol = true;
 	private float gravity = 0f;
+	private bool movingBack = false;
+	private bool isJumpingLantern = false;
 	int currentWaypoint;
 	private GameObject[] waypoints;
 	public GameObject waypointParent;
@@ -58,54 +60,58 @@ public class HumanoidAIController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		Vector3 direction = mainCharacter.position - this.transform.position;
-		float angle = Vector3.Angle (direction, this.transform.forward);
-		gravity -= 9.81f * Time.deltaTime;
-		direction.y = gravity;
-
-
-		if (patrol && waypoints.Length > 0) {
-			//patrol
-			myAnimator.SetBool ("isWalking", true);
-			if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
-				//select random waypoint to patrol towards
-				currentWaypoint = Random.Range (0, waypoints.Length);
-			}
-
-			//rotate towards current waypoint
-			direction = waypoints [currentWaypoint].transform.position - this.transform.position;
+		if (!movingBack) {
+			Vector3 direction = mainCharacter.position - this.transform.position;
+			float angle = Vector3.Angle (direction, this.transform.forward);
+			gravity -= 9.81f * Time.deltaTime;
 			direction.y = gravity;
 
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-			myCharacterController.Move (this.transform.forward * Time.deltaTime * patrolSpeed);
-		}
 
-		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
-		// Noise Detection
-		if (!patrol && distance < chaseDistance) {
-			myAnimator.SetBool ("isWalking", false);
-			patrol = false;
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-		} else if (distance < 4.0f) {
-			myAnimator.SetBool ("isWalking", false);
-			patrol = false;
-		} else if (lineOfSight (angle)) {
-			//AI alerted, pursue main character
-			myAnimator.SetBool ("isWalking", false);
-			patrol = false;
-			this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-			myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-		} else {
-			patrol = true;
-			myAnimator.SetBool ("isWalking", true);
-		}
+			if (patrol && waypoints.Length > 0) {
+				//patrol
+				myAnimator.SetBool ("isWalking", true);
+				if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
+					//select random waypoint to patrol towards
+					currentWaypoint = Random.Range (0, waypoints.Length);
+				}
 
-		if (myCharacterController.isGrounded)
-			gravity = 0f;
+				//rotate towards current waypoint
+				direction = waypoints [currentWaypoint].transform.position - this.transform.position;
+				direction.y = gravity;
+
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * patrolSpeed);
+			}
+
+			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
+			// Noise Detection
+			if (!patrol && distance < chaseDistance) {
+				myAnimator.SetBool ("isWalking", false);
+				patrol = false;
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+			} else if (distance < 4.0f) {
+				myAnimator.SetBool ("isWalking", false);
+				patrol = false;
+			} else if (lineOfSight (angle)) {
+				//AI alerted, pursue main character
+				myAnimator.SetBool ("isWalking", false);
+				patrol = false;
+				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
+				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+			} else {
+				patrol = true;
+				myAnimator.SetBool ("isWalking", true);
+			}
+
+			if (myCharacterController.isGrounded)
+				gravity = 0f;
 				
-		if (distance <= killDistance) {
-			manager.dead = true;
+			if (distance <= killDistance) {
+				manager.dead = true;
+			}
+		} else {
+			myCharacterController.Move (transform.forward * Time.deltaTime * -3f);
 		}
 			
 	}
@@ -143,10 +149,26 @@ public class HumanoidAIController : MonoBehaviour
 		}
 	}
 
-	public void enterSafeZone(bool isLantern){
-		if (isLantern) {
-			myAnimator.SetTrigger ("shouldJump");
+	public void enterSafeZone (bool isLantern)
+	{
+		if (isLantern && !isJumpingLantern) {
+			isJumpingLantern = true;
+			movingBack = true;
+			myAnimator.SetTrigger ("inLantern");
+			StartCoroutine (stumble ());
 		}
+	}
+
+	IEnumerator stumble(){
+		yield return new WaitForSeconds (1.5f);
+		movingBack = false;
+		yield return new WaitForSeconds (.5f);
+		isJumpingLantern = false;
+//		alertSpeed = -3f;
+//		stopMoving = false;
+//		yield return new WaitForSeconds (2);
+//		isJumpingLantern = false;
+//		alertSpeed = 11f;
 	}
 
 }
