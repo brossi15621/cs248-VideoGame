@@ -1343,9 +1343,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1190492177390484}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 124.78116, y: 0, z: 115.7}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -111.94545, y: 40.424274, z: -268.67218}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4960983393023644}
   - {fileID: 4988062448800916}
@@ -1714,7 +1714,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123994701943750}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.07, z: 0}
+  m_LocalPosition: {x: 0, y: 2.94, z: 0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4137644256260134}
@@ -2254,10 +2254,10 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Color: {r: 0.5588235, g: 0.3574827, b: 0.3574827, a: 1}
   m_Intensity: 10
-  m_Range: 10
-  m_SpotAngle: 45
+  m_Range: 15
+  m_SpotAngle: 35
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2292,18 +2292,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40044fae5809646f1a0d79cc9d2457ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypointParent: {fileID: 0}
   accuracyWaypoint: 5
   patrolSpeed: 3
-  alertSpeed: 10
+  alertSpeed: 11
   patrolRotationSpeed: 0.01
   alertRotationSpeed: 0.1
   findAngle: 60
   findDistance: 40
-  chaseDistance: 50
+  chaseDistance: 80
   killDistance: 4
 --- !u!135 &135809138068200304
 SphereCollider:
