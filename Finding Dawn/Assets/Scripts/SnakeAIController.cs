@@ -11,8 +11,9 @@ public class SnakeAIController : MonoBehaviour {
 	private GameManagerScript manager;
 	private float killDistance = 3f; 
 	private float gravity = 0f;
-	public GameObject[] waypoints;
+	private GameObject[] waypoints;
 	int currentWaypoint;
+	public GameObject waypointParent;
 	public float accuracyWaypoint = 5.0f;
 	public float patrolSpeed = 3.0f;
 	public float alertSpeed =10.0f;
@@ -28,6 +29,7 @@ public class SnakeAIController : MonoBehaviour {
 
 
 
+
 	// Use this for initialization
 	void Start () {
 		//myRenderer = GetComponent<Renderer> ();
@@ -38,12 +40,15 @@ public class SnakeAIController : MonoBehaviour {
 		snakeLight = gameObject.GetComponentInChildren<Light> ();
 		snakeLight.color = Color.green;
 
-		//This is buggy because it is just getting the parent object and not making
-		//an array of its children. personally I think it might be better to just publically enter these.
-		//waypoints = GameObject.FindGameObjectsWithTag ("WaypointsHumanoidAI"); 
-		currentWaypoint = Random.Range (0, waypoints.Length);
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera")[0];
 		mainCharacter = mainCamera.transform;
+
+		//Getting waypoint
+		waypoints = new GameObject[waypointParent.transform.childCount];
+		for (int i = 0; i < waypoints.Length; i++) {
+			waypoints [i] = waypointParent.transform.GetChild (i).gameObject;
+		}
+		currentWaypoint = Random.Range (0, waypoints.Length);
 	}
 
 	void Update() {
@@ -60,7 +65,7 @@ public class SnakeAIController : MonoBehaviour {
 			//Get movement direction towards main character including gravity
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			gravity -= 9.81f * Time.deltaTime;
-			direction.y = gravity;
+			//direction.y = 0;
 
 			if (patrol && waypoints [0] != null) {
 				moveToWaypoint (direction);
@@ -69,13 +74,9 @@ public class SnakeAIController : MonoBehaviour {
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 			if (!patrol && distance < chaseDistance) {
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-//			} else if (distance < 4.0f) {
-//				if (patrol && waypoints [0] != null) {
-//					//just been found
-//					manager.numSnakesChasing++;
-//				}
-//				patrol = false;
+				Vector3 moveDirection = transform.forward;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime * alertSpeed);
 			} else {
 				//not alert
 				if (!patrol) {
@@ -130,8 +131,12 @@ public class SnakeAIController : MonoBehaviour {
 				manager.numSnakesChasing++;
 				patrol = false;
 				Vector3 direction = mainCharacter.position - this.transform.position;
+				//direction.y = 0;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= alertSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} 
 		}
 	}
@@ -162,10 +167,12 @@ public class SnakeAIController : MonoBehaviour {
 
 		//rotate towards current waypoint
 		direction = waypoints[currentWaypoint].transform.position - this.transform.position;
-		direction.y = gravity;
-
+		direction.y = 0;
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-		myCharacterController.Move(this.transform.forward * Time.deltaTime * patrolSpeed);
+		Vector3 moveDirection = transform.forward;
+		moveDirection *= patrolSpeed;
+		moveDirection.y = gravity;
+		myCharacterController.Move(moveDirection * Time.deltaTime);
 	}
 
 	/**
