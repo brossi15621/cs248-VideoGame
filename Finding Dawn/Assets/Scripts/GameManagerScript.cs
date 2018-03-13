@@ -15,7 +15,6 @@ public class GameManagerScript : MonoBehaviour {
 	private Vector3 startPoint = new Vector3 (115.0f, 5.0f, 60.0f);
 	public static GameManagerScript instance = null;
 
-
 	//Constants
 	private const int maxSnakes = 10;
 	private const float initialLightRange = 24f;
