@@ -44,11 +44,13 @@ public class SnakeAIController : MonoBehaviour {
 		mainCharacter = mainCamera.transform;
 
 		//Getting waypoint
-		waypoints = new GameObject[waypointParent.transform.childCount];
-		for (int i = 0; i < waypoints.Length; i++) {
-			waypoints [i] = waypointParent.transform.GetChild (i).gameObject;
+		if (waypointParent != null) {
+			waypoints = new GameObject[waypointParent.transform.childCount];
+			for (int i = 0; i < waypoints.Length; i++) {
+				waypoints [i] = waypointParent.transform.GetChild (i).gameObject;
+			}
+			currentWaypoint = Random.Range (0, waypoints.Length);
 		}
-		currentWaypoint = Random.Range (0, waypoints.Length);
 	}
 
 	void Update() {
@@ -95,7 +97,7 @@ public class SnakeAIController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		//Patrolling non-instantiated snake
-		if (patrol && waypoints[0] != null) {
+		if (patrol && waypoints != null) {
 			lookForPlayer (other);
 		}
 
@@ -182,7 +184,7 @@ public class SnakeAIController : MonoBehaviour {
 	 */ 
 	public void destroySnake(){
 		if (!isDead) { //Need this in case player puts down 2 lanterns
-			if (waypoints [0] != null) {
+			if (waypoints != null) {
 				isDead = true;
 				anim.Play ("death");
 				StartCoroutine (resetTimer (3f));
