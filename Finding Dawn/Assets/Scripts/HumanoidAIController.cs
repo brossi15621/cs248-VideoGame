@@ -157,7 +157,7 @@ public class HumanoidAIController : MonoBehaviour
 	{
 		if (patrol) {
 			if (other.tag == "Player" || other.tag == "MainCamera") {
-				if (Input.GetAxis ("Horizontal") > 0f || Input.GetAxis ("Vertical") > 0 || Input.GetButton ("Jump")) {
+				if (Input.GetAxis ("Horizontal") != 0f || Input.GetAxis ("Vertical") != 0 || Input.GetButton ("Jump")) {
 					//move from state of patrol to state of pursuit
 					myAnimator.SetBool ("isWalking", false);
 					manager.numHumanoidsChasing++;
