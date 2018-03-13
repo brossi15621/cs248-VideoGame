@@ -65,7 +65,7 @@ public class HumanoidAIController : MonoBehaviour
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			gravity -= 9.81f * Time.deltaTime;
-			direction.y = gravity;
+			direction.y = 0f;
 
 
 			if (patrol && waypoints.Length > 0) {
@@ -78,10 +78,12 @@ public class HumanoidAIController : MonoBehaviour
 
 				//rotate towards current waypoint
 				direction = waypoints [currentWaypoint].transform.position - this.transform.position;
-				direction.y = gravity;
-
+				direction.y = 0f;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-				myCharacterController.Move (this.transform.forward * Time.deltaTime * patrolSpeed);
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= patrolSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			}
 
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
@@ -89,17 +91,21 @@ public class HumanoidAIController : MonoBehaviour
 			if (!patrol && distance < chaseDistance) {
 				myAnimator.SetBool ("isWalking", false);
 				patrol = false;
+				direction.y = 0f;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
-			} else if (distance < 4.0f) {
-				myAnimator.SetBool ("isWalking", false);
-				patrol = false;
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= alertSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} else if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				myAnimator.SetBool ("isWalking", false);
 				patrol = false;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= alertSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} else {
 				patrol = true;
 				myAnimator.SetBool ("isWalking", true);
@@ -144,7 +150,10 @@ public class HumanoidAIController : MonoBehaviour
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-					myCharacterController.Move (this.transform.forward * Time.deltaTime * alertSpeed);
+					Vector3 moveDirection = transform.forward;
+					moveDirection *= alertSpeed;
+					moveDirection.y = gravity;
+					myCharacterController.Move (moveDirection * Time.deltaTime);
 				}
 			}
 		}
@@ -157,7 +166,7 @@ public class HumanoidAIController : MonoBehaviour
 			movingBack = true;
 			myAnimator.SetTrigger ("inLantern");
 			StartCoroutine (stumble ());
-		} else {
+		} else if(!isLantern){
 			dead = true;
 			myAnimator.SetBool ("inSafeZone", true);
 		}
