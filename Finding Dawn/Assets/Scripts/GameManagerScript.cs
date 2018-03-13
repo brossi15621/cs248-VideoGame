@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManagerScript : MonoBehaviour {
 	
@@ -9,12 +10,27 @@ public class GameManagerScript : MonoBehaviour {
 	private Light CharacterLight;
 	public bool dead = false;
 	public int numSnakesChasing = 0;
+	private int numSnakesChasingLast = 0;
+	public int numGiantsChasing = 0;
+	private int numGiantsChasingLast = 0;
+	public int numHumanoidsChasing = 0;
+	private int numHumanoidsChasingLast = 0;
+	private bool beingChased = false;
 	public GameObject[] snakesMade;
 	public int currSnakeIndex = 0;
 	public GameObject CharacterLightObject;
 	private Vector3 startPoint = new Vector3 (115.0f, 5.0f, 60.0f);
 	public static GameManagerScript instance = null;
 
+	public AudioMixerSnapshot outOfCombat;
+	public AudioMixerSnapshot inCombat;
+	public AudioClip[] stings;
+	public AudioSource stingSource;
+	public float bpm = 128;
+
+	private float m_TransitionIn;
+	private float m_TransitionOut;
+	private float m_QuarterNote;
 
 	//Constants
 	private const int maxSnakes = 10;
@@ -33,13 +49,54 @@ public class GameManagerScript : MonoBehaviour {
 		snakesMade = new GameObject[maxSnakes]; 
 		CharacterLight = CharacterLightObject.GetComponent<Light> ();
 		Application.targetFrameRate = 200;
+
+		m_QuarterNote = 60 / bpm;
+		m_TransitionIn = m_QuarterNote;
+		//m_TransitionOut = m_QuarterNote * 2;
+		m_TransitionOut = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		bool transitionToChase = false;
+		bool transitionFromChase = false;
+		if (!beingChased) {
+			if (numSnakesChasing > 0 && numSnakesChasingLast == 0) {
+				transitionToChase = true;
+			} else if (numGiantsChasing > 0 && numGiantsChasingLast == 0) {
+				transitionToChase = true;
+			} else if (numHumanoidsChasing > 0 && numHumanoidsChasingLast == 0) {
+				transitionToChase = true;
+			}
+		} else {
+			if (numSnakesChasing == 0 && numSnakesChasingLast > 0) {
+				transitionFromChase = true;
+			} else if (numGiantsChasing == 0 && numGiantsChasingLast > 0) {
+				transitionFromChase = true;
+			} else if (numHumanoidsChasing == 0 && numHumanoidsChasingLast > 0) {
+				transitionFromChase = true;
+			}
+		}
+
+		if (transitionToChase) {
+			//went from quiet state to chasing state, change music
+			inCombat.TransitionTo (m_TransitionIn);
+			beingChased = true;
+		}
+
+		if (transitionFromChase) {
+			//went from chasing state to quiet state, change music
+			outOfCombat.TransitionTo(m_TransitionOut);
+			beingChased = false;
+		}
+
+		numSnakesChasingLast = numSnakesChasing;
+		numGiantsChasingLast = numGiantsChasing;
+		numHumanoidsChasingLast = numHumanoidsChasing;
+
 		if (dead) {
 			PlayerDeath ();
-		}	
+		}
 	}
 
 	void PlayerDeath () {
@@ -48,8 +105,17 @@ public class GameManagerScript : MonoBehaviour {
 			CharacterLight.range = initialLightRange;
 		}
 		snakesMade = new GameObject[maxSnakes];
+
+		outOfCombat.TransitionTo(m_TransitionOut);
+		beingChased = false;
 		numSnakesChasing = 0;
+		numSnakesChasingLast = 0;
+		numGiantsChasing = 0;
+		numGiantsChasingLast = 0;
+		numHumanoidsChasing = 0;
+		numHumanoidsChasingLast = 0;
 		currSnakeIndex = 0;
+
 		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
 		SceneManager.LoadScene ("DemoScene");
 		gameObject.transform.position = startPoint;

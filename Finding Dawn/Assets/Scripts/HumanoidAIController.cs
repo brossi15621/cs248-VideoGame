@@ -100,6 +100,12 @@ public class HumanoidAIController : MonoBehaviour
 			} else if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				myAnimator.SetBool ("isWalking", false);
+
+				if (patrol) {
+					//move from state of patrolling to a state of pursuit
+					manager.numHumanoidsChasing++;
+				}
+
 				patrol = false;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 				Vector3 moveDirection = transform.forward;
@@ -107,6 +113,12 @@ public class HumanoidAIController : MonoBehaviour
 				moveDirection.y = gravity;
 				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} else {
+				
+				if (!patrol) {
+					//move from state of pursuit to state of patrol
+					manager.numHumanoidsChasing--;
+				}
+
 				patrol = true;
 				myAnimator.SetBool ("isWalking", true);
 			}
@@ -146,7 +158,9 @@ public class HumanoidAIController : MonoBehaviour
 		if (patrol) {
 			if (other.tag == "Player" || other.tag == "MainCamera") {
 				if (Input.GetAxis ("Horizontal") > 0f || Input.GetAxis ("Vertical") > 0 || Input.GetButton ("Jump")) {
+					//move from state of patrol to state of pursuit
 					myAnimator.SetBool ("isWalking", false);
+					manager.numHumanoidsChasing++;
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
@@ -167,6 +181,7 @@ public class HumanoidAIController : MonoBehaviour
 			myAnimator.SetTrigger ("inLantern");
 			StartCoroutine (stumble ());
 		} else if(!isLantern){
+			manager.numHumanoidsChasing--;
 			dead = true;
 			myAnimator.SetBool ("inSafeZone", true);
 		}
