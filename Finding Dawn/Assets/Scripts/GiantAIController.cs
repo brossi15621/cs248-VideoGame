@@ -87,6 +87,12 @@ public class GiantAIController : MonoBehaviour
 			}
 			if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
+
+				if (patrol) {
+					//going from state of patrol to state of pursuit
+					manager.numGiantsChasing++;
+				}
+
 				patrol = false;
 				//myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 				//myRigidbody.MovePosition (transform.position + transform.forward * Time.fixedDeltaTime * alertSpeed);
@@ -97,6 +103,12 @@ public class GiantAIController : MonoBehaviour
 				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} else {
 				//not alert
+
+				if (!patrol) {
+					//going from state of pursuit to state of patrol
+					manager.numGiantsChasing--;
+				}
+
 				patrol = true;
 			}	
 
@@ -148,6 +160,7 @@ public class GiantAIController : MonoBehaviour
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			if (!lineOfSight(angle)) {
+				manager.numGiantsChasing--;
 				break;
 			}
 		}
