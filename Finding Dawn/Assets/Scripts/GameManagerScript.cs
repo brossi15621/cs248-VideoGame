@@ -19,7 +19,6 @@ public class GameManagerScript : MonoBehaviour {
 	public GameObject[] snakesMade;
 	public int currSnakeIndex = 0;
 	public GameObject CharacterLightObject;
-	private Vector3 startPoint = new Vector3 (115.0f, 5.0f, 60.0f);
 	public static GameManagerScript instance = null;
 
 	public AudioMixerSnapshot outOfCombat;
@@ -69,11 +68,11 @@ public class GameManagerScript : MonoBehaviour {
 				transitionToChase = true;
 			}
 		} else {
-			if (numSnakesChasing == 0 && numSnakesChasingLast > 0) {
+			if ((numSnakesChasing == 0 && numSnakesChasingLast > 0) && numGiantsChasing == 0 && numHumanoidsChasing == 0) {
 				transitionFromChase = true;
-			} else if (numGiantsChasing == 0 && numGiantsChasingLast > 0) {
+			} else if ((numGiantsChasing == 0 && numGiantsChasingLast > 0) && numSnakesChasing == 0 && numHumanoidsChasing == 0) {
 				transitionFromChase = true;
-			} else if (numHumanoidsChasing == 0 && numHumanoidsChasingLast > 0) {
+			} else if ((numHumanoidsChasing == 0 && numHumanoidsChasingLast > 0) && numSnakesChasing == 0 && numGiantsChasing == 0) {
 				transitionFromChase = true;
 			}
 		}
@@ -117,8 +116,8 @@ public class GameManagerScript : MonoBehaviour {
 		currSnakeIndex = 0;
 
 		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
-		SceneManager.LoadScene ("DemoScene");
-		gameObject.transform.position = startPoint;
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+		gameObject.transform.position = GameObject.Find ("RespawnPoint").transform.position;
 		dead = false;
 	}
 
