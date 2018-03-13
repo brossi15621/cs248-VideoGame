@@ -5608,18 +5608,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1776469311606664, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579508181241946, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1984873438811322, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c274d31f7afca4081ba60abb7c6aff85, type: 2}
   m_IsPrefabParent: 0
@@ -6332,7 +6320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1438916621
 Transform:
   m_ObjectHideFlags: 0
@@ -9596,18 +9584,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
-      propertyPath: m_Name
-      value: Giant 2 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 114191531456181872, guid: 2f109a29be97f4d6fbef350783840fb8,
         type: 2}
       propertyPath: waypointParent
       value: 
       objectReference: {fileID: 1670402428}
     - target: {fileID: 1894472947037512, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Name
+      value: Giant 2 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f109a29be97f4d6fbef350783840fb8, type: 2}

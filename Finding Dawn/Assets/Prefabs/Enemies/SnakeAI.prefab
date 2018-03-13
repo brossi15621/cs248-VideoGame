@@ -1692,7 +1692,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650640998435616}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -1.1178436, y: 0, z: -2.061798}
+  m_LocalPosition: {x: 310.4351, y: -0.00000047683716, z: 316.27505}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4660382646174938}
@@ -1774,10 +1774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   accuracyWaypoint: 5
   patrolSpeed: 3
@@ -1917,9 +1913,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 1
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0.1, y: 1, z: -0.3}
+  m_Center: {x: 0.1, y: 0.5, z: 0}

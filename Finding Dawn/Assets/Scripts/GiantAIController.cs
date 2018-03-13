@@ -10,6 +10,7 @@ public class GiantAIController : MonoBehaviour
 	private CharacterController myCharacterController;
 	private bool patrol = true;
 	private GameObject[] waypoints;
+	private float gravity = 0;
 	public GameObject waypointParent;
 	int currentWaypoint;
 	public float accuracyWaypoint = 20.0f;
@@ -62,8 +63,8 @@ public class GiantAIController : MonoBehaviour
 		if (!animController.GetBool ("inSafeZone")) { //If it's not in a safe zone
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
-			//gravity -= 9.81f * Time.deltaTime;
-			direction.y = 0f; //gravity;
+			gravity -= 9.81f * Time.deltaTime;
+			direction.y = 0f; 
 
 
 			if (patrol && waypoints.Length > 0) {
@@ -79,7 +80,10 @@ public class GiantAIController : MonoBehaviour
 				//myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
 				//myRigidbody.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * patrolSpeed);
 				transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), patrolRotationSpeed);
-				myCharacterController.Move (transform.forward * Time.deltaTime * patrolSpeed);
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= patrolSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			}
 			if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
@@ -87,11 +91,18 @@ public class GiantAIController : MonoBehaviour
 				//myRigidbody.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 				//myRigidbody.MovePosition (transform.position + transform.forward * Time.fixedDeltaTime * alertSpeed);
 				transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
-				myCharacterController.Move (transform.forward * Time.deltaTime * alertSpeed);
+				Vector3 moveDirection = transform.forward;
+				moveDirection *= alertSpeed;
+				moveDirection.y = gravity;
+				myCharacterController.Move (moveDirection * Time.deltaTime);
 			} else {
 				//not alert
 				patrol = true;
-			}		
+			}	
+
+			if (myCharacterController.isGrounded) {
+				gravity = 0;
+			}
 		}
 	}
 
