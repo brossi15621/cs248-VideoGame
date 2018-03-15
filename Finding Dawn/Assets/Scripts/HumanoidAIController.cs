@@ -52,9 +52,9 @@ public class HumanoidAIController : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetButton ("Run")) {
-			myCollider.radius = 10f;
+			myCollider.radius = 8f;
 		} else {
-			myCollider.radius = 6f;
+			myCollider.radius = 5f;
 		}
 	}
 	    
@@ -141,14 +141,16 @@ public class HumanoidAIController : MonoBehaviour
 		float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 		//Check Distance
 
-		if ((patrol && distance < findDistance) || (!patrol && distance < chaseDistance)
+		if (((patrol && distance < findDistance) || (!patrol && distance < chaseDistance))
 			//Check angle
 		    && (!patrol || angle < findAngle)) {
 			//In finding area now check for barriers
 			if (!patrol || (!Physics.Linecast (transform.position, mainCharacter.position, out hit) || hit.transform.tag == "Player")) {
 				//If there is a direct line between player and giant. Meaning terrain is not in way.
+				//However there is a bug here where if there is a snake between you two it will not see you.
+				//Linecast hits the snake collider.
 				return true;
-			}
+			} 
 		}
 		return false;
 	}

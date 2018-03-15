@@ -202,11 +202,13 @@ public class SnakeAIController : MonoBehaviour {
 	}
 
 	public IEnumerator resetTimer (float time) {
+		if (!patrol) {
+			manager.numSnakesChasing--;
+		}
 		yield return new WaitForSeconds (time);
 		gameObject.transform.position = waypoints [0].transform.position;
 		patrol = true;
 		isDead = false;
-		manager.numSnakesChasing--;
 		anim.Play ("move");
 
 	}
