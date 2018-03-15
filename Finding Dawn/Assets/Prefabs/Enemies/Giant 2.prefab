@@ -1470,7 +1470,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894472947037512}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 214.49742, y: 0, z: 294.02744}
+  m_LocalPosition: {x: -82.112045, y: 172.82646, z: 117.421814}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_Children:
   - {fileID: 4411132709750236}
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   findAngle: 50
   findDistance: 50
-  chaseDistance: 85
+  chaseDistance: 60
   killDistance: 5
 --- !u!137 &137658327963848324
 SkinnedMeshRenderer:

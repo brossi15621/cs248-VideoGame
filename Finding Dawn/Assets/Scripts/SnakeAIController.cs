@@ -128,7 +128,7 @@ public class SnakeAIController : MonoBehaviour {
 		//Checks if colliding with player/camera
 		if (other.tag == "Player" || other.tag == "MainCamera") { 
 			//Checks if player is moving or jumping
-			if (Input.GetAxis ("Horizontal") > 0f || Input.GetAxis ("Vertical") > 0f || Input.GetButton ("Jump")) {
+			if (Input.GetAxis ("Horizontal") != 0f || Input.GetAxis ("Vertical") != 0f || Input.GetButton ("Jump")) {
 				//If so, alerts the snake.
 				manager.numSnakesChasing++;
 				patrol = false;
@@ -202,11 +202,13 @@ public class SnakeAIController : MonoBehaviour {
 	}
 
 	public IEnumerator resetTimer (float time) {
+		if (!patrol) {
+			manager.numSnakesChasing--;
+		}
 		yield return new WaitForSeconds (time);
 		gameObject.transform.position = waypoints [0].transform.position;
 		patrol = true;
 		isDead = false;
-		manager.numSnakesChasing--;
 		anim.Play ("move");
 
 	}
