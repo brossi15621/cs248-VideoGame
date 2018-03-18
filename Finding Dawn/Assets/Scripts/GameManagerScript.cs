@@ -50,9 +50,8 @@ public class GameManagerScript : MonoBehaviour {
 		Application.targetFrameRate = 200;
 
 		m_QuarterNote = 60 / bpm;
-		m_TransitionIn = m_QuarterNote;
-		//m_TransitionOut = m_QuarterNote * 2;
-		m_TransitionOut = 0;
+		m_TransitionIn = m_QuarterNote * 2;
+		m_TransitionOut = m_QuarterNote * 32;
 	}
 	
 	// Update is called once per frame
@@ -80,6 +79,7 @@ public class GameManagerScript : MonoBehaviour {
 		if (transitionToChase) {
 			//went from quiet state to chasing state, change music
 			inCombat.TransitionTo (m_TransitionIn);
+			stingSource.Play ();
 			beingChased = true;
 		}
 

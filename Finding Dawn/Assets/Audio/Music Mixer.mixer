@@ -23,9 +23,10 @@ AudioMixerController:
     - 36e2254fd163a4780a7f03c88ae9730e
     - d817b3051b4774737a5ecc3660a11f5e
     - ff5c95d6b5f484e7a87a45999b949dc2
+    - b88d95d8e090346499361d8c6d3d83a2
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 245579112226814780}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -39,6 +40,7 @@ AudioMixerGroupController:
   - {fileID: 243479529818673178}
   - {fileID: 243230259637382358}
   - {fileID: 243663643783950512}
+  - {fileID: 243912198241953842}
   m_Volume: bcd77a66852244feaae215d615029315
   m_Pitch: d281af2699b6747fab818a04cdb137d5
   m_Effects:
@@ -142,6 +144,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243912198241953842
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sting
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b88d95d8e090346499361d8c6d3d83a2
+  m_Children: []
+  m_Volume: 62ae2283d892e4f6195ef98db5c22f83
+  m_Pitch: 0bb7692d828ff48be9c02e51298f0bc2
+  m_Effects:
+  - {fileID: 244855207865728942}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &244027062337475248
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -164,6 +183,19 @@ AudioMixerEffectController:
   m_EffectID: 8070f6888ceed4dfb92ad272f322e407
   m_EffectName: Attenuation
   m_MixLevel: 96031c3bd8db844ba8720dd85ec91941
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244855207865728942
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0644be3437da048638e70aac75a7187d
+  m_EffectName: Attenuation
+  m_MixLevel: 418086dc1d5cb4f568ee8520fa30201d
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
