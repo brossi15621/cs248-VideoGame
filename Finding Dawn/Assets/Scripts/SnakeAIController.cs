@@ -78,6 +78,7 @@ public class SnakeAIController : MonoBehaviour {
 
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 			if (!patrol && distance < chaseDistance) {
+				direction.y -= 1.78f;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
 				Vector3 moveDirection = transform.forward;
 				moveDirection.y = gravity;

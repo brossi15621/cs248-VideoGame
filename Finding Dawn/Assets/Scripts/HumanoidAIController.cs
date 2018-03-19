@@ -71,9 +71,10 @@ public class HumanoidAIController : MonoBehaviour
 			direction.y = 0f;
 
 
-			if (patrol && waypoints.Length > 0) {
+			if (patrol && waypoints.Length > 1) {
 				//patrol
 				myAnimator.SetBool ("isWalking", true);
+				myAnimator.SetBool ("isIdle", false);
 				if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
 					//select random waypoint to patrol towards
 					currentWaypoint = Random.Range (0, waypoints.Length);
@@ -87,12 +88,16 @@ public class HumanoidAIController : MonoBehaviour
 				moveDirection *= patrolSpeed;
 				moveDirection.y = gravity;
 				myCharacterController.Move (moveDirection * Time.deltaTime);
+			} else if (waypoints.Length == 1) {
+				myAnimator.SetBool ("isWalking", false);
+				myAnimator.SetBool ("isIdle", true);
 			}
 
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 			// Noise Detection
 			if (!patrol && distance < chaseDistance) {
 				myAnimator.SetBool ("isWalking", false);
+				myAnimator.SetBool ("isIdle", false);
 				patrol = false;
 				direction.y = 0f;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
@@ -103,6 +108,7 @@ public class HumanoidAIController : MonoBehaviour
 			} else if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				myAnimator.SetBool ("isWalking", false);
+				myAnimator.SetBool ("isIdle", false);
 
 				if (patrol) {
 					//move from state of patrolling to a state of pursuit
@@ -126,7 +132,11 @@ public class HumanoidAIController : MonoBehaviour
 				}
 
 				patrol = true;
-				myAnimator.SetBool ("isWalking", true);
+				if (waypoints.Length > 1) {
+					myAnimator.SetBool ("isWalking", true);
+				} else if (waypoints.Length == 1) {
+					myAnimator.SetBool ("isIdle", true);
+				}
 			}
 
 			if (myCharacterController.isGrounded)
@@ -168,6 +178,7 @@ public class HumanoidAIController : MonoBehaviour
 				if (Input.GetAxis ("Horizontal") != 0f || Input.GetAxis ("Vertical") != 0 || Input.GetButton ("Jump")) {
 					//move from state of patrol to state of pursuit
 					myAnimator.SetBool ("isWalking", false);
+					myAnimator.SetBool ("isIdle", false);
 					manager.numHumanoidsChasing++;
 					int randClip = Random.Range (1, audioClips.Length);
 					audioSource.clip = audioClips[randClip];
