@@ -22,6 +22,7 @@ public class SnakeAIController : MonoBehaviour {
 	public float patrolRotationSpeed = 0.01f;
 	public float alertRotationSpeed = 0.1f;
 	public float chaseDistance = 50f;
+	public float findRadius = 6f;
 	public Animation anim;
 	private bool patrol = true;
 	private int snakeIndex = -1;
@@ -58,9 +59,9 @@ public class SnakeAIController : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetButton ("Run")) {
-			myCollider.radius = 10f;
+			myCollider.radius = findRadius * 1.5f;
 		} else {
-			myCollider.radius = 6f;
+			myCollider.radius = findRadius;
 		}
 	}
 

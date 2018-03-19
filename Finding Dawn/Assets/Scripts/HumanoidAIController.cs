@@ -28,6 +28,7 @@ public class HumanoidAIController : MonoBehaviour
 	public float findDistance = 40f;
 	public float chaseDistance = 70f;
 	public float killDistance = 4f;
+	public float findRadius = 5f;
 	public AudioSource audioSource;
 	public AudioClip[] audioClips;
 
@@ -55,9 +56,9 @@ public class HumanoidAIController : MonoBehaviour
 	void Update ()
 	{
 		if (Input.GetButton ("Run")) {
-			myCollider.radius = 8f;
+			myCollider.radius = findRadius * 1.5f;
 		} else {
-			myCollider.radius = 5f;
+			myCollider.radius = findRadius;
 		}
 	}
 	    
@@ -67,6 +68,9 @@ public class HumanoidAIController : MonoBehaviour
 		if (!movingBack && !dead) {
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
+			if (direction.y > 10f) { //This makes it so that humans can't see above them
+				angle = 90f;
+			}
 			gravity -= 9.81f * Time.deltaTime;
 			direction.y = 0f;
 
@@ -134,8 +138,10 @@ public class HumanoidAIController : MonoBehaviour
 				patrol = true;
 				if (waypoints.Length > 1) {
 					myAnimator.SetBool ("isWalking", true);
+					myAnimator.SetBool ("isIdle", false);
 				} else if (waypoints.Length == 1) {
 					myAnimator.SetBool ("isIdle", true);
+					myAnimator.SetBool ("isWalking", false);
 				}
 			}
 

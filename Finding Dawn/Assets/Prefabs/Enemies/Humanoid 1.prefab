@@ -1345,7 +1345,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1190492177390484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -111.94545, y: 40.424274, z: -268.67218}
+  m_LocalPosition: {x: 7.7630005, y: 11.994141, z: 363.38675}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4960983393023644}
@@ -2378,12 +2378,13 @@ MonoBehaviour:
   accuracyWaypoint: 5
   patrolSpeed: 3
   alertSpeed: 11
-  patrolRotationSpeed: 0.01
+  patrolRotationSpeed: 0.05
   alertRotationSpeed: 0.1
   findAngle: 50
   findDistance: 45
   chaseDistance: 80
   killDistance: 4
+  findRadius: 5
   audioSource: {fileID: 82652760531455586}
   audioClips:
   - {fileID: 8300000, guid: 440d0a66d4b9e4fb28c69d422a19b687, type: 3}
