@@ -30,6 +30,7 @@ public class GameManagerScript : MonoBehaviour {
 	private float m_TransitionIn;
 	private float m_TransitionOut;
 	private float m_QuarterNote;
+	public Vector3 respawnPoint;
 
 	//Constants
 	private const int maxSnakes = 10;
@@ -52,6 +53,7 @@ public class GameManagerScript : MonoBehaviour {
 		m_QuarterNote = 60 / bpm;
 		m_TransitionIn = m_QuarterNote * 2;
 		m_TransitionOut = m_QuarterNote * 32;
+		respawnPoint = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -117,7 +119,7 @@ public class GameManagerScript : MonoBehaviour {
 
 		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
-		gameObject.transform.position = GameObject.Find ("RespawnPoint").transform.position;
+		gameObject.transform.position = respawnPoint;
 		dead = false;
 	}
 

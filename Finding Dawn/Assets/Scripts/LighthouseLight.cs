@@ -14,6 +14,6 @@ public class LighthouseLight : MonoBehaviour {
 	
 	IEnumerator QuickStart(){
 		yield return new WaitForSeconds (2f);
-		rotating ["rotate_light"].speed = .1f;
+		rotating ["rotate_light"].speed = .2f;
 	}
 }
