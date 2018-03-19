@@ -105,8 +105,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 			if (sprintTimeLeft > 6f) {
 				m_RunSpeed = maxSprintSpeed;
-				if (isExhausted) {
-					//going from state of "exhaustion" to state of being able to sprint...play slow heartbeat
+				if (isExhausted || isTiring) {
+					//going from state of tiring or exhaustion to state of being able to sprint fully...play slow heartbeat
 					heartbeatSource.clip = slowHeartbeatClip;
 					heartbeatSource.Play ();
 					isExhausted = false;
