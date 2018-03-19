@@ -1693,7 +1693,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650640998435616}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 38.904846, y: 0, z: -372.0806}
+  m_LocalPosition: {x: 5, y: 33.556114, z: 484}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4660382646174938}
@@ -1859,9 +1859,10 @@ MonoBehaviour:
   accuracyWaypoint: 5
   patrolSpeed: 3
   alertSpeed: 10
-  patrolRotationSpeed: 0.01
+  patrolRotationSpeed: 0.05
   alertRotationSpeed: 0.1
   chaseDistance: 30
+  findRadius: 4.11
   anim: {fileID: 0}
   hissSource: {fileID: 82988447102473456}
 --- !u!114 &114676298835903392
@@ -1885,7 +1886,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 4.11
   m_Center: {x: 0.1, y: 1, z: -0.3}
 --- !u!135 &135755959272268454
 SphereCollider:

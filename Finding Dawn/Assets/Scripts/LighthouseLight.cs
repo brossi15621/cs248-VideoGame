@@ -9,11 +9,11 @@ public class LighthouseLight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rotating = gameObject.GetComponent<Animation> ();
-		rotating ["rotate_light"].speed = .1f;
+		StartCoroutine ("QuickStart");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	IEnumerator QuickStart(){
+		yield return new WaitForSeconds (2f);
+		rotating ["rotate_light"].speed = .1f;
 	}
 }

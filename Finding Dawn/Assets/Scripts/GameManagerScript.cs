@@ -129,7 +129,9 @@ public class GameManagerScript : MonoBehaviour {
 		if (snakesMade [index] != null) {
 			Destroy (snakesMade [index]);
 			snakesMade [index] = null;
-			numSnakesChasing--;
+			if (numSnakesChasing > 0) {
+				numSnakesChasing--;
+			}
 		}
 	}
 

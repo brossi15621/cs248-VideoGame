@@ -16,7 +16,9 @@ public class DeadZone : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(){
-		manager.dead = true;
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "Player") {
+			manager.dead = true;
+		}
 	}
 }

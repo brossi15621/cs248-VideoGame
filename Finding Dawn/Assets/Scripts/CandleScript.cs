@@ -32,7 +32,7 @@ public class CandleScript : MonoBehaviour {
 			float noiseAttenuation = 1/distance;
 			candleSource.volume = noiseAttenuation;
 		}
-		Debug.Log ("Distance: " + distance);
+		//Debug.Log ("Distance: " + distance);
 		if (deminish) {
 			spotLight.intensity = Mathf.Lerp (spotLight.intensity, 0f, .6f * Time.deltaTime);
 		} else {
