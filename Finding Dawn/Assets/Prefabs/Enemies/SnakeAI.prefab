@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 135490936371269060}
   - component: {fileID: 143531868472380682}
   - component: {fileID: 114551350186266072}
+  - component: {fileID: 82988447102473456}
   m_Layer: 0
   m_Name: SnakeAI
   m_TagString: Snake
@@ -1692,7 +1693,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650640998435616}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 92.92659, y: 205.9977, z: 181.78629}
+  m_LocalPosition: {x: 38.904846, y: 0, z: -372.0806}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4660382646174938}
@@ -1702,6 +1703,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!82 &82988447102473456
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650640998435616}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243594372997243104, guid: f9643201c08e34904a838f6d66ebf420,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 690b35c79ae6543dc90a39298ad68717, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108909696062613146
 Light:
   m_ObjectHideFlags: 1
@@ -1781,6 +1863,7 @@ MonoBehaviour:
   alertRotationSpeed: 0.1
   chaseDistance: 30
   anim: {fileID: 0}
+  hissSource: {fileID: 82988447102473456}
 --- !u!114 &114676298835903392
 MonoBehaviour:
   m_ObjectHideFlags: 1
