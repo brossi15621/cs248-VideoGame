@@ -67,7 +67,7 @@ public class SnakeAIController : MonoBehaviour {
 			//Get movement direction towards main character including gravity
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			gravity -= 9.81f * Time.deltaTime;
-			//direction.y = 0;
+			direction.y -= 1.8f;//This is the value that the character is taller than the snake.
 
 			if (patrol && waypoints [0] != null) {
 				moveToWaypoint (direction);

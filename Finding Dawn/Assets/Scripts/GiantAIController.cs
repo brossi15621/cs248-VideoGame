@@ -160,7 +160,9 @@ public class GiantAIController : MonoBehaviour
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			if (!lineOfSight(angle)) {
-				manager.numGiantsChasing--;
+				if (manager.numGiantsChasing != 0) {
+					manager.numGiantsChasing--;
+				}
 				break;
 			}
 		}

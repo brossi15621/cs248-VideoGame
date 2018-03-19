@@ -50,6 +50,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private float maxSprintSpeed;
 		public float volumeScale = 0.1f;
 
+		public AudioSource heartbeatSource;
+		public AudioClip slowHeartbeatClip;
+		public AudioClip mediumHeartbeatClip;
+		public AudioClip fastHeartbeatClip;
+		private bool isTiring = false;
+		private bool isExhausted = false;
+
         // Use this for initialization
         private void Start()
         {
@@ -98,8 +105,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 			if (sprintTimeLeft > 6f) {
 				m_RunSpeed = maxSprintSpeed;
+				if (isExhausted || isTiring) {
+					//going from state of tiring or exhaustion to state of being able to sprint fully...play slow heartbeat
+					heartbeatSource.clip = slowHeartbeatClip;
+					heartbeatSource.Play ();
+					isExhausted = false;
+					isTiring = false;
+				}
 			} else {
 				m_RunSpeed = Mathf.Clamp( m_WalkSpeed + ((maxSprintSpeed - m_WalkSpeed) * (sprintTimeLeft / 6f)), m_WalkSpeed, maxSprintSpeed);
+				if (!isTiring) {
+					//going from state of non-exhaustion to state of tiring...play medium heartbeat
+					heartbeatSource.clip = mediumHeartbeatClip;
+					heartbeatSource.Play ();
+					isTiring = true;
+				}
+				if ((m_RunSpeed == m_WalkSpeed) && !isExhausted) {
+					//going from state of tiring to state of exhaustion...switch to fast heartbeat
+					heartbeatSource.clip = fastHeartbeatClip;
+					heartbeatSource.Play ();
+					isExhausted = true;
+				}
 			}
 
 			if (Input.GetButton ("Run") && (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)) {

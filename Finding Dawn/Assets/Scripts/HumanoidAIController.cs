@@ -68,9 +68,10 @@ public class HumanoidAIController : MonoBehaviour
 			direction.y = 0f;
 
 
-			if (patrol && waypoints.Length > 0) {
+			if (patrol && waypoints.Length > 1) {
 				//patrol
 				myAnimator.SetBool ("isWalking", true);
+				myAnimator.SetBool ("isIdle", false);
 				if (Vector3.Distance (waypoints [currentWaypoint].transform.position, transform.position) < accuracyWaypoint) {
 					//select random waypoint to patrol towards
 					currentWaypoint = Random.Range (0, waypoints.Length);
@@ -84,12 +85,17 @@ public class HumanoidAIController : MonoBehaviour
 				moveDirection *= patrolSpeed;
 				moveDirection.y = gravity;
 				myCharacterController.Move (moveDirection * Time.deltaTime);
+			} else if (patrol && waypoints.Length == 1) {
+				//Idle State
+				myAnimator.SetBool ("isIdle", true);
+				myAnimator.SetBool ("isWalking", false);
 			}
 
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 			// Noise Detection
 			if (!patrol && distance < chaseDistance) {
 				myAnimator.SetBool ("isWalking", false);
+				myAnimator.SetBool ("isIdle", false);
 				patrol = false;
 				direction.y = 0f;
 				this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
@@ -100,6 +106,7 @@ public class HumanoidAIController : MonoBehaviour
 			} else if (lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				myAnimator.SetBool ("isWalking", false);
+				myAnimator.SetBool ("isIdle", false);
 
 				if (patrol) {
 					//move from state of patrolling to a state of pursuit
@@ -120,7 +127,13 @@ public class HumanoidAIController : MonoBehaviour
 				}
 
 				patrol = true;
-				myAnimator.SetBool ("isWalking", true);
+				if (waypoints.Length > 1) {
+					myAnimator.SetBool ("isWalking", true);
+					myAnimator.SetBool ("isIdle", false);
+				} else {
+					myAnimator.SetBool ("isIdle", true);
+					myAnimator.SetBool ("isWalking", false);
+				}
 			}
 
 			if (myCharacterController.isGrounded)
@@ -132,7 +145,6 @@ public class HumanoidAIController : MonoBehaviour
 		} else if(movingBack && !dead){
 			myCharacterController.Move (transform.forward * Time.deltaTime * -3f);
 		} 
-			
 	}
 
 	private bool lineOfSight (float angle)

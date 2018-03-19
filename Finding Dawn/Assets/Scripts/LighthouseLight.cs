@@ -9,7 +9,7 @@ public class LighthouseLight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rotating = gameObject.GetComponent<Animation> ();
-		rotating ["rotate_light"].speed = .2f;
+		rotating ["rotate_light"].speed = .1f;
 	}
 	
 	// Update is called once per frame
