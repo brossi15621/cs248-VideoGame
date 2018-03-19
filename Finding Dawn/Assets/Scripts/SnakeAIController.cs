@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class SnakeAIController : MonoBehaviour {
 
@@ -26,6 +28,7 @@ public class SnakeAIController : MonoBehaviour {
 	private float touchDistance = 6f;
 	private bool isDead = false;
 	private Light snakeLight;
+	public AudioSource hissSource;
 
 
 
@@ -130,6 +133,7 @@ public class SnakeAIController : MonoBehaviour {
 			//Checks if player is moving or jumping
 			if (Input.GetAxis ("Horizontal") != 0f || Input.GetAxis ("Vertical") != 0f || Input.GetButton ("Jump")) {
 				//If so, alerts the snake.
+				hissSource.Play (); 
 				manager.numSnakesChasing++;
 				patrol = false;
 				Vector3 direction = mainCharacter.position - this.transform.position;

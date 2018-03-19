@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class GiantAIController : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class GiantAIController : MonoBehaviour
 	private Transform mainCharacter;
 	//private Rigidbody myRigidbody;
 	private CharacterController myCharacterController;
+	private SphereCollider myCollider;
 	private bool patrol = true;
 	private GameObject[] waypoints;
 	private float gravity = 0;
@@ -24,6 +27,8 @@ public class GiantAIController : MonoBehaviour
 	public float killDistance = 5f;
 	private Animator animController;
 	private GameManagerScript manager;
+	public AudioSource audioSource;
+	public AudioClip[] audioClips;
 
 	//private float gravity = 0f;
 
@@ -35,6 +40,7 @@ public class GiantAIController : MonoBehaviour
 		animController = gameObject.GetComponent<Animator> ();
 		manager = GameObject.Find ("Player").GetComponent<GameManagerScript> ();
 		GameObject mainCamera = GameObject.FindGameObjectsWithTag ("MainCamera") [0];
+		myCollider = GetComponent<SphereCollider> ();
 		mainCharacter = mainCamera.transform;
 
 		//Getting waypoint
@@ -91,6 +97,9 @@ public class GiantAIController : MonoBehaviour
 				if (patrol) {
 					//going from state of patrol to state of pursuit
 					manager.numGiantsChasing++;
+					int randClip = Random.Range (1, audioClips.Length);
+					audioSource.clip = audioClips[randClip];
+					audioSource.Play();
 				}
 
 				patrol = false;
@@ -142,6 +151,8 @@ public class GiantAIController : MonoBehaviour
 	public void inSafeZone (bool isCandle)
 	{
 		animController.SetBool ("inSafeZone", true);
+		audioSource.clip = audioClips[0];
+		audioSource.Play();
 		if (isCandle) {
 			StartCoroutine (waitOutCandle ());
 		} else {
@@ -172,6 +183,9 @@ public class GiantAIController : MonoBehaviour
 	IEnumerator waitOutCandle ()
 	{
 		yield return new WaitForSeconds (7);
+		int randClip = Random.Range (1, audioClips.Length);
+		audioSource.clip = audioClips[randClip];
+		audioSource.Play();
 		animController.SetBool ("inSafeZone", false);
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class HumanoidAIController : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class HumanoidAIController : MonoBehaviour
 	public float findDistance = 40f;
 	public float chaseDistance = 70f;
 	public float killDistance = 4f;
+	public AudioSource audioSource;
+	public AudioClip[] audioClips;
 
 		
 
@@ -111,6 +114,9 @@ public class HumanoidAIController : MonoBehaviour
 				if (patrol) {
 					//move from state of patrolling to a state of pursuit
 					manager.numHumanoidsChasing++;
+					int randClip = Random.Range (1, audioClips.Length);
+					audioSource.clip = audioClips[randClip];
+					audioSource.Play();
 				}
 
 				patrol = false;
@@ -175,6 +181,9 @@ public class HumanoidAIController : MonoBehaviour
 					//move from state of patrol to state of pursuit
 					myAnimator.SetBool ("isWalking", false);
 					manager.numHumanoidsChasing++;
+					int randClip = Random.Range (1, audioClips.Length);
+					audioSource.clip = audioClips[randClip];
+					audioSource.Play();
 					patrol = false;
 					Vector3 direction = mainCharacter.position - this.transform.position;
 					this.transform.rotation = Quaternion.Slerp (this.transform.rotation, Quaternion.LookRotation (direction), alertRotationSpeed);
@@ -196,6 +205,8 @@ public class HumanoidAIController : MonoBehaviour
 			StartCoroutine (stumble ());
 		} else if(!isLantern){
 			manager.numHumanoidsChasing--;
+			audioSource.clip = audioClips[0];
+			audioSource.Play();
 			dead = true;
 			myAnimator.SetBool ("inSafeZone", true);
 		}
