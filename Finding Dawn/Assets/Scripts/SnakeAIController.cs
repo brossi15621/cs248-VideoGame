@@ -208,7 +208,7 @@ public class SnakeAIController : MonoBehaviour {
 	}
 
 	public IEnumerator resetTimer (float time) {
-		if (!patrol) {
+		if (!patrol && manager.numSnakesChasing > 0) {
 			manager.numSnakesChasing--;
 		}
 		yield return new WaitForSeconds (time);

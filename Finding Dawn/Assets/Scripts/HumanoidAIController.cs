@@ -132,7 +132,9 @@ public class HumanoidAIController : MonoBehaviour
 				
 				if (!patrol) {
 					//move from state of pursuit to state of patrol
-					manager.numHumanoidsChasing--;
+					if (manager.numHumanoidsChasing > 0) {
+						manager.numHumanoidsChasing--;
+					}
 				}
 
 				patrol = true;
@@ -209,7 +211,9 @@ public class HumanoidAIController : MonoBehaviour
 			myAnimator.SetTrigger ("inLantern");
 			StartCoroutine (stumble ());
 		} else if(!isLantern){
-			manager.numHumanoidsChasing--;
+			if (manager.numHumanoidsChasing > 0) {
+				manager.numHumanoidsChasing--;
+			}
 			audioSource.clip = audioClips[0];
 			audioSource.Play();
 			dead = true;

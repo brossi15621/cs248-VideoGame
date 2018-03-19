@@ -115,7 +115,9 @@ public class GiantAIController : MonoBehaviour
 
 				if (!patrol) {
 					//going from state of pursuit to state of patrol
-					manager.numGiantsChasing--;
+					if (manager.numGiantsChasing > 0) {
+						manager.numGiantsChasing--;
+					}
 				}
 
 				patrol = true;
@@ -171,7 +173,9 @@ public class GiantAIController : MonoBehaviour
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			if (!lineOfSight(angle)) {
-				manager.numGiantsChasing--;
+				if (manager.numGiantsChasing > 0) {
+					manager.numGiantsChasing--;
+				}
 				break;
 			}
 		}
