@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class AdditionalFPC : MonoBehaviour {
 
 	public GameObject candle;
 	private int candlesLeft;
+	public Transform mainCharacter;
 
 	CharacterController myController;
 
@@ -20,10 +22,12 @@ public class AdditionalFPC : MonoBehaviour {
 	void Update () {
 
 		//Candle things
-		if (myController.isGrounded && Input.GetButtonDown("Candle")) {
-			placeCandle ();
+		if (mainCharacter.GetComponent<FirstPersonController>().isActiveAndEnabled) {
+			//if first person controller is enabled, we can place candles
+			if (myController.isGrounded && Input.GetButtonDown ("Candle")) {
+				placeCandle ();
+			}
 		}
-
 	}
 
 	/**

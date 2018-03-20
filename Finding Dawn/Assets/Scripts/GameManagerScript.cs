@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManagerScript : MonoBehaviour {
 	
-	private Transform mainCharacter;
+	public Transform mainCharacter;
 	private Light CharacterLight;
 	public bool dead = false;
 	public int numSnakesChasing = 0;
@@ -31,11 +32,15 @@ public class GameManagerScript : MonoBehaviour {
 	private float m_TransitionOut;
 	private float m_QuarterNote;
 	public Vector3 respawnPoint;
+	public Vector3 originalRespawnPoint;
 
 	//Constants
 	private const int maxSnakes = 10;
 	private const float initialLightRange = 24f;
 	private const float rangeDecrement = 4f;
+
+	public Transform pauseCanvas;
+	private bool reinitializeLevel = false;
 
 
 	// Use this for initialization
@@ -53,11 +58,24 @@ public class GameManagerScript : MonoBehaviour {
 		m_QuarterNote = 60 / bpm;
 		m_TransitionIn = m_QuarterNote * 2;
 		m_TransitionOut = m_QuarterNote * 32;
-		respawnPoint = gameObject.transform.position;
+		if (!reinitializeLevel) {
+			originalRespawnPoint = gameObject.transform.position;
+		}
+		respawnPoint = originalRespawnPoint;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (reinitializeLevel) {
+			//quit to main menu, then re-entered a level
+			Start ();
+			reinitializeLevel = false;
+		}
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			//player pressed escape
+			Pause();
+		}
+
 		bool transitionToChase = false;
 		bool transitionFromChase = false;
 		if (!beingChased) {
@@ -98,6 +116,49 @@ public class GameManagerScript : MonoBehaviour {
 		if (dead) {
 			PlayerDeath ();
 		}
+	}
+
+	public void Pause() {
+		if (pauseCanvas.gameObject.activeInHierarchy == false) {
+			//pasue menu not active...set it to be active
+			pauseCanvas.gameObject.SetActive (true);
+			Time.timeScale = 0;
+			mainCharacter.GetComponent<FirstPersonController> ().enabled = false;
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			AudioListener.pause = true;
+		} else {
+			//close pause menu
+			pauseCanvas.gameObject.SetActive (false); 
+			Time.timeScale = 1;
+			mainCharacter.GetComponent<FirstPersonController> ().enabled = true;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+			AudioListener.pause = false;
+		}
+	}
+
+	public void QuitToMainMenu() {
+		pauseCanvas.gameObject.SetActive (false); 
+		Time.timeScale = 1;
+		//mainCharacter.GetComponent<FirstPersonController> ().enabled = true;
+		AudioListener.pause = false;
+
+		outOfCombat.TransitionTo(m_TransitionOut);
+		beingChased = false;
+		numSnakesChasing = 0;
+		numSnakesChasingLast = 0;
+		numGiantsChasing = 0;
+		numGiantsChasingLast = 0;
+		numHumanoidsChasing = 0;
+		numHumanoidsChasingLast = 0;
+		currSnakeIndex = 0;
+
+		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
+		dead = false;
+		reinitializeLevel = true;
+
+		SceneManager.LoadScene(0); 
 	}
 
 	void PlayerDeath () {
