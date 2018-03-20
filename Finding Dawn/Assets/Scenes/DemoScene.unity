@@ -204,11 +204,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1438094603405044, guid: 05e64b528c4174fc5950fe34dc5e04bd,
     type: 2}
   m_PrefabInternal: {fileID: 674234183}
---- !u!1 &26304916 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1899501277407618, guid: 05e64b528c4174fc5950fe34dc5e04bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 188484848}
 --- !u!1001 &31556119
 Prefab:
   m_ObjectHideFlags: 0
@@ -1729,11 +1724,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0ad7476b2abc4e32bfa5fdf0151f55a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &410532947 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1069911079257438, guid: 05e64b528c4174fc5950fe34dc5e04bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 188484848}
 --- !u!1 &412697649 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1438094603405044, guid: 05e64b528c4174fc5950fe34dc5e04bd,
@@ -2999,11 +2989,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4499932878982664, guid: 05e64b528c4174fc5950fe34dc5e04bd,
     type: 2}
   m_PrefabInternal: {fileID: 1110323845}
---- !u!1 &648509054 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1044011065531234, guid: 05e64b528c4174fc5950fe34dc5e04bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 188484848}
 --- !u!1 &652293956 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1660826675791770, guid: 05e64b528c4174fc5950fe34dc5e04bd,
@@ -3505,92 +3490,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4560701509887776, guid: c0ad7476b2abc4e32bfa5fdf0151f55a,
     type: 2}
   m_PrefabInternal: {fileID: 1800787453}
---- !u!1 &736927373 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1650640998435616, guid: 44288cafea3d14608a7e712c811e6071,
-    type: 2}
-  m_PrefabInternal: {fileID: 987453155}
---- !u!82 &736927378
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736927373}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243594372997243104, guid: f9643201c08e34904a838f6d66ebf420,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 690b35c79ae6543dc90a39298ad68717, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &744607776 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1438094603405044, guid: 05e64b528c4174fc5950fe34dc5e04bd,
@@ -4162,43 +4061,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
         type: 2}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 648509054}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 26304916}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1625251787}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
-      propertyPath: waypoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 410532947}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
-      propertyPath: waypoints.Array.data[4]
-      value: 
-      objectReference: {fileID: 1971123561}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
       propertyPath: waypointParent
       value: 
       objectReference: {fileID: 243953883}
-    - target: {fileID: 114551350186266072, guid: 44288cafea3d14608a7e712c811e6071,
-        type: 2}
-      propertyPath: hissSource
-      value: 
-      objectReference: {fileID: 736927378}
-    - target: {fileID: 1650640998435616, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44288cafea3d14608a7e712c811e6071, type: 2}
   m_IsPrefabParent: 0
@@ -7347,11 +7212,6 @@ Transform:
   m_Father: {fileID: 1189266768}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1625251787 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1660826675791770, guid: 05e64b528c4174fc5950fe34dc5e04bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 188484848}
 --- !u!1001 &1632274988
 Prefab:
   m_ObjectHideFlags: 0
@@ -9249,11 +9109,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0ad7476b2abc4e32bfa5fdf0151f55a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1971123561 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1438094603405044, guid: 05e64b528c4174fc5950fe34dc5e04bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 188484848}
 --- !u!4 &1974366268 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4560701509887776, guid: c0ad7476b2abc4e32bfa5fdf0151f55a,
