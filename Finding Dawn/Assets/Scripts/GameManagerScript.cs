@@ -50,6 +50,7 @@ public class GameManagerScript : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
+		outOfCombat.TransitionTo (0);
 		snakesMade = new GameObject[maxSnakes]; 
 		CharacterLight = CharacterLightObject.GetComponent<Light> ();
 		Application.targetFrameRate = 200;

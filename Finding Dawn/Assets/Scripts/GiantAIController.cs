@@ -29,6 +29,7 @@ public class GiantAIController : MonoBehaviour
 	private GameManagerScript manager;
 	public AudioSource audioSource;
 	public AudioClip[] audioClips;
+	public bool isDead = false;
 
 	//private float gravity = 0f;
 
@@ -66,7 +67,7 @@ public class GiantAIController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if (!animController.GetBool ("inSafeZone")) { //If it's not in a safe zone
+		if (!animController.GetBool ("inSafeZone") && !isDead) { //If it's not in a safe zone
 			Vector3 direction = mainCharacter.position - this.transform.position;
 			float angle = Vector3.Angle (direction, this.transform.forward);
 			gravity -= 9.81f * Time.deltaTime;
@@ -152,13 +153,15 @@ public class GiantAIController : MonoBehaviour
 
 	public void inSafeZone (bool isCandle)
 	{
-		animController.SetBool ("inSafeZone", true);
-		audioSource.clip = audioClips[0];
-		audioSource.Play();
-		if (isCandle) {
-			StartCoroutine (waitOutCandle ());
-		} else {
-			StartCoroutine (leaveSafeZone ());
+		if (!isDead) {
+			animController.SetBool ("inSafeZone", true);
+			audioSource.clip = audioClips [0];
+			audioSource.Play ();
+			if (isCandle) {
+				StartCoroutine (waitOutCandle ());
+			} else {
+				StartCoroutine (leaveSafeZone ());
+			}
 		}
 	}
 		
@@ -189,6 +192,15 @@ public class GiantAIController : MonoBehaviour
 		audioSource.clip = audioClips[randClip];
 		audioSource.Play();
 		animController.SetBool ("inSafeZone", false);
+	}
+
+	public void destroyGiant(){
+		isDead = true;
+		audioSource.clip = audioClips[0];
+		audioSource.Play();
+		animController.SetBool ("isDead", true);
+		this.enabled = false;
+		//gameObject.GetComponent<GiantAIController> ().enabled = false;//Turns giant script off
 	}
 
 }
