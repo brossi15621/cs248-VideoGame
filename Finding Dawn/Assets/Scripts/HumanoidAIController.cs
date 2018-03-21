@@ -99,7 +99,7 @@ public class HumanoidAIController : MonoBehaviour
 
 			float distance = Vector3.Distance (mainCharacter.position, this.transform.position);
 			// Noise Detection
-			if (!patrol && distance < chaseDistance) {
+			if (!patrol && distance < chaseDistance && !dead) {
 				myAnimator.SetBool ("isWalking", false);
 				myAnimator.SetBool ("isIdle", false);
 				patrol = false;
@@ -109,7 +109,7 @@ public class HumanoidAIController : MonoBehaviour
 				moveDirection *= alertSpeed;
 				moveDirection.y = gravity;
 				myCharacterController.Move (moveDirection * Time.deltaTime);
-			} else if (lineOfSight (angle)) {
+			} else if (!dead && lineOfSight (angle)) {
 				//AI alerted, pursue main character
 				myAnimator.SetBool ("isWalking", false);
 				myAnimator.SetBool ("isIdle", false);
@@ -181,7 +181,7 @@ public class HumanoidAIController : MonoBehaviour
 
 	void OnTriggerStay (Collider other)
 	{
-		if (patrol) {
+		if (patrol && !dead) {
 			if (other.tag == "Player" || other.tag == "MainCamera") {
 				if (Input.GetAxis ("Horizontal") != 0f || Input.GetAxis ("Vertical") != 0 || Input.GetButton ("Jump")) {
 					//move from state of patrol to state of pursuit
@@ -218,6 +218,7 @@ public class HumanoidAIController : MonoBehaviour
 			audioSource.Play();
 			dead = true;
 			myAnimator.SetBool ("inSafeZone", true);
+			this.enabled = false;
 		}
 	}
 

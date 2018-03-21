@@ -29,6 +29,7 @@ public class SnakeAIController : MonoBehaviour {
 	private float touchDistance = 6f;
 	private bool isDead = false;
 	private Light snakeLight;
+	public bool returnToLife = true;
 	public AudioSource hissSource;
 
 
@@ -212,10 +213,14 @@ public class SnakeAIController : MonoBehaviour {
 			manager.numSnakesChasing--;
 		}
 		yield return new WaitForSeconds (time);
-		gameObject.transform.position = waypoints [0].transform.position;
-		patrol = true;
-		isDead = false;
-		anim.Play ("move");
+		if (returnToLife) {
+			gameObject.transform.position = waypoints [0].transform.position;
+			patrol = true;
+			isDead = false;
+			anim.Play ("move");
+		} else {
+			this.enabled = false;
+		}
 
 	}
 
