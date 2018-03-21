@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManagerScript : MonoBehaviour {
 	
-	private Transform mainCharacter;
+	public Transform mainCharacter;
 	private Light CharacterLight;
 	public bool dead = false;
 	public int numSnakesChasing = 0;
@@ -31,11 +32,14 @@ public class GameManagerScript : MonoBehaviour {
 	private float m_TransitionOut;
 	private float m_QuarterNote;
 	public Vector3 respawnPoint;
+	public Vector3 originalRespawnPoint;
 
 	//Constants
 	private const int maxSnakes = 10;
 	private const float initialLightRange = 24f;
 	private const float rangeDecrement = 4f;
+
+	public Transform pauseCanvas;
 
 
 	// Use this for initialization
@@ -58,6 +62,11 @@ public class GameManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			//player pressed escape
+			Pause();
+		}
+
 		bool transitionToChase = false;
 		bool transitionFromChase = false;
 		if (!beingChased) {
@@ -98,6 +107,33 @@ public class GameManagerScript : MonoBehaviour {
 		if (dead) {
 			PlayerDeath ();
 		}
+	}
+
+	public void Pause() {
+		if (pauseCanvas.gameObject.activeInHierarchy == false) {
+			//pasue menu not active...set it to be active
+			pauseCanvas.gameObject.SetActive (true);
+			Time.timeScale = 0;
+			mainCharacter.GetComponent<FirstPersonController> ().enabled = false;
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			AudioListener.pause = true;
+		} else {
+			//close pause menu
+			pauseCanvas.gameObject.SetActive (false); 
+			Time.timeScale = 1;
+			mainCharacter.GetComponent<FirstPersonController> ().enabled = true;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+			AudioListener.pause = false;
+		}
+	}
+
+	public void QuitToMainMenu() {
+		Time.timeScale = 1;
+		AudioListener.pause = false;
+		SceneManager.LoadScene(0); 
+		Destroy (gameObject);
 	}
 
 	void PlayerDeath () {

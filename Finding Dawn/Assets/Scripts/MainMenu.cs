@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
+
 
 public class MainMenu : MonoBehaviour {
 
 	public Button playText;
+	public Transform mainCharacter;
 
 	// Use this for initialization
 	void Start () {
