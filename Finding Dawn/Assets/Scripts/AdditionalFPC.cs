@@ -7,7 +7,7 @@ public class AdditionalFPC : MonoBehaviour {
 
 	public GameObject candle;
 	private int candlesLeft;
-	public Transform mainCharacter;
+	private Transform mainCharacter;
 
 	CharacterController myController;
 
@@ -15,6 +15,7 @@ public class AdditionalFPC : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		myController = gameObject.GetComponent<CharacterController> ();
+		mainCharacter = GameObject.Find ("Player").transform;
 		candlesLeft = 5;
 	}
 	

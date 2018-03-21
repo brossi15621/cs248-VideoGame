@@ -18,7 +18,6 @@ public class MainMenu : MonoBehaviour {
 	
 	public void StartGame() {
 		//load the first level of the game which should be at index 1 of build settings
-		mainCharacter.GetComponent<FirstPersonController> ().enabled = true;
 		SceneManager.LoadScene(1); 
 	}
 }

@@ -40,7 +40,6 @@ public class GameManagerScript : MonoBehaviour {
 	private const float rangeDecrement = 4f;
 
 	public Transform pauseCanvas;
-	private bool reinitializeLevel = false;
 
 
 	// Use this for initialization
@@ -58,19 +57,11 @@ public class GameManagerScript : MonoBehaviour {
 		m_QuarterNote = 60 / bpm;
 		m_TransitionIn = m_QuarterNote * 2;
 		m_TransitionOut = m_QuarterNote * 32;
-		if (!reinitializeLevel) {
-			originalRespawnPoint = gameObject.transform.position;
-		}
-		respawnPoint = originalRespawnPoint;
+		respawnPoint = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (reinitializeLevel) {
-			//quit to main menu, then re-entered a level
-			Start ();
-			reinitializeLevel = false;
-		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			//player pressed escape
 			Pause();
@@ -139,26 +130,10 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	public void QuitToMainMenu() {
-		pauseCanvas.gameObject.SetActive (false); 
 		Time.timeScale = 1;
-		//mainCharacter.GetComponent<FirstPersonController> ().enabled = true;
 		AudioListener.pause = false;
-
-		outOfCombat.TransitionTo(m_TransitionOut);
-		beingChased = false;
-		numSnakesChasing = 0;
-		numSnakesChasingLast = 0;
-		numGiantsChasing = 0;
-		numGiantsChasingLast = 0;
-		numHumanoidsChasing = 0;
-		numHumanoidsChasingLast = 0;
-		currSnakeIndex = 0;
-
-		gameObject.GetComponent<AdditionalFPC> ().resetCandles ();
-		dead = false;
-		reinitializeLevel = true;
-
 		SceneManager.LoadScene(0); 
+		Destroy (gameObject);
 	}
 
 	void PlayerDeath () {

@@ -7,11 +7,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class MirrorController : MonoBehaviour {
 	private RawImage myMirror;
-	public Transform mainCharacter;
+	private Transform mainCharacter;
 
 	// Use this for initialization
 	void Start () {
 		myMirror = gameObject.GetComponent<RawImage> ();
+		mainCharacter = GameObject.Find ("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -20,12 +21,11 @@ public class MirrorController : MonoBehaviour {
 			//if first person controller enabled, we can toggle mirror
 			if (Input.GetButtonDown ("Mirror")) {
 				if (myMirror.enabled) {
-					
 					myMirror.enabled = false;
 				} else {
 					myMirror.enabled = true;
 				}
 			}
-		}
+		} 
 	}
 }
