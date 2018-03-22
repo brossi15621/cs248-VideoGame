@@ -40,6 +40,7 @@ public class EndGame : MonoBehaviour {
 
 	private void killEnemy(Transform child){
 		if (child.tag == "Snake") {
+			child.GetComponentInChildren<Light> ().enabled = false;
 			SnakeAIController snakeScript = child.GetComponent<SnakeAIController> ();
 			snakeScript.returnToLife = false;
 			snakeScript.destroySnake ();
